@@ -8,7 +8,6 @@
          <!-- Sol Taraf: 12 birim, 4 sütunlu düzen -->
          <div class="col-md-12">
             <div class="row">
-               <!-- Dinamik olarak haber kartları -->
                {% for writting in writtings_list %}
                <div class="col-md-3 mb-4">
                   <a href="{% url 'writtings_detail' writting.id %}" class="card news-card" style="height: 100%; text-decoration: none; color: inherit;">
@@ -21,24 +20,21 @@
                   </a>
                </div>
                    {% endfor %}
+                   <nav aria-label="Page navigation">
+                     <ul class="pagination justify-content-center">
+                         <li class="page-item">
+                             <a class="page-link" href="#" aria-label="Previous">
+                                 <span aria-hidden="true">&laquo; Geri</span>
+                             </a>
+                         </li>
+                         <li class="page-item">
+                             <a class="page-link" href="#" aria-label="Next">
+                                 <span aria-hidden="true">İrəli &raquo;</span>
+                             </a>
+                         </li>
+                     </ul>
+                 </nav>
             </div>
-
-            <!-- Sayfalama -->
-            <nav aria-label="Page navigation">
-               <ul class="pagination justify-content-center">
-                   <li class="page-item">
-                       <a class="page-link" href="#" aria-label="Previous">
-                           <span aria-hidden="true">&laquo; Geri</span>
-                       </a>
-                   </li>
-                   <li class="page-item">
-                       <a class="page-link" href="#" aria-label="Next">
-                           <span aria-hidden="true">İrəli &raquo;</span>
-                       </a>
-                   </li>
-               </ul>
-           </nav>
-
          </div>
       </div>
    </main>
