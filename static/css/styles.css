@@ -1,0 +1,334 @@
+/* Genel stil ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    background: #333;
+    color: #ffffff;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 2rem;
+    font-size: 6rem;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    color: #000;
+    font-weight: 580;
+}
+
+.container {
+    width: 100%;
+    max-width: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem !important;
+}
+
+.nav-link {
+    color: #000 !important;
+}
+
+.mt-4 {
+    margin-top: 0;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+/* Header section */
+.header-section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    height: 400px;
+    overflow: hidden;
+}
+
+.image-preview {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.row {
+    height: 580px;
+    display: flex;
+    align-items: stretch;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.container .row>* {
+    padding-right: 0;
+}
+
+.image-preview img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Makale grid düzeni */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.article-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    transition: none;
+}
+
+.article-card img {
+    width: 100%;
+    height: 400;
+    object-fit: cover;
+}
+
+.article-card .author-name,
+.article-card .article-title {
+    transition: none;
+}
+
+.author-name {
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+.article-title {
+    margin: 0;
+    color: #333;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image-preview,
+    .article-list {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .image-preview img {
+        width: 100%;
+        height: auto;
+        padding: 0;
+    }
+
+    .article-list {
+        margin-top: 1rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
+.article-list {
+    background-color: #000;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+.article-list h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Her makale başlığının altına beyaz çizgi */
+.list-group-item {
+    margin: 10px 0;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    padding: 15px 0;
+    cursor: pointer;
+    height: auto;
+    transition: none;
+
+}
+
+.list-group-item:hover {
+    background-color: #343a40;
+}
+
+/* Resim sabit boyutlandırma */
+
+
+#articleImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover durumunda da sabit boyut */
+.article-card:hover,
+.list-group-item:hover {
+    transform: none;
+    transition: none;
+}
+
+/* news */
+/* Makale kartları */
+.news-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.news-card:hover {
+    transform: scale(1.05);
+}
+
+.news-card img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.news-card .card-body {
+    padding: 1 5px;
+}
+
+.news-card .card-title {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.news-card .card-text {
+    margin: 0;
+    color: #666;
+}
+
+.card-img,
+.card-img-top {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+    .news-card {
+        margin-bottom: 20px;
+    }
+}
+
+.pagination .page-item .page-link {
+    color: black;
+    /* Bağlantı metni rengi */
+    border-radius: 0;
+    /* Kenarları düz yap */
+    border: none;
+    /* Kenarlıkları kaldır */
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #f1f1f1;
+    /* Üzerine gelindiğinde arka plan rengi */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: black;
+    /* Seçili sayfanın arka plan rengi */
+    color: white;
+    /* Seçili sayfanın yazı rengi */
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #BF3D23;
+    /* Yaxınlaşdıqda mətnin yeni rəngi */
+    transition: color 0.3s;
+    /* Rəng dəyişmə animasiyası */
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+    /* Rəngin dəyişmə effektini əlavə et */
+}
+
+.nav-link:hover {
+    color: rgb(191, 61, 35);
+    /* İstədiyiniz rəng */
+}

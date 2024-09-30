@@ -1,0 +1,39 @@
+{% load static %}
+{% include 'base.html' %}
+<body>
+{% include 'header.html' %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-9 mx-auto d-flex flex-column" style="padding-left: 75px;"> <!-- Soldan əlavə boşluq %50 artırıldı -->
+                <h2 style="font-size: 2.5em; margin-bottom: 0;">{{ prose.title }}</h2>
+                <div style="width: 75%; margin-bottom: 5px;">
+                    <hr style="margin: 0; border-top: 1px solid #000; width: 100%;">
+                </div>
+                <div style="display: flex; justify-content: space-between; width: 75%; margin: 0; padding-top: 5px;">
+                    <p class="author" style="font-size: 1.5em; margin: 0;">{{ prose.author }}</p>
+                    <span style="font-size: 1.5em;">{{ prose.created_at|date:"d F Y" }}</span>
+                </div>
+                <div class="mb-4" style="flex-grow: 1;">
+                    <img src="{{ prose.image.url }}" class="img-fluid" alt="{{ prose.title }}" style="width: 75%; height: auto; margin-top: 20px;">
+                </div>
+                <p style="font-size: 1.2em; margin-top: 20px; width: 75%;"> <!-- Burada margin-top ekleyerek boşluk oluşturdum -->
+                    {{ prose.content }}
+                </p>
+            </div>
+            <div class="col-md-3 d-flex flex-column" style="margin-top: 2.5em; padding-right: 70px;">
+                <h4 style="margin-bottom: 1em;">Arxivimizdən</h4>
+                <ul class="list-unstyled">
+                    {% for related in related_prose %}
+                    <li class="mb-3">
+                        <img src="{{ related.image.url }}" class="img-fluid" alt="{{ related.title }}" style="width: 100%; height: auto;">
+                        <a href="{% url 'prose_detail' related.id %}" style="color: black; text-decoration: none;">{{ related.title }}</a>
+                        <p class="author">Müəllif: {{ related.author }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+{% include 'footer.html' %}

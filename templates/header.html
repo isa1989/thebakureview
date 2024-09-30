@@ -1,0 +1,68 @@
+{% load static %}
+<!-- Header Section -->
+<header class="bg-white text-white text-center py-4" style="margin-bottom: 20px;"> <!-- Başlıq altında boşluq -->
+    {% comment %} <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo"> {% endcomment %}
+    <h1><a href="/" style="text-decoration: none; color: inherit;">THE BAKU REVIEW</a></h1>
+    <!-- Geniş ekranda görünecek menü -->
+    <nav class="d-none d-lg-block">
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'prose_list' %}">NƏSR</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'poetry_list' %}">POEZİYA</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="{% url 'writtings_list' %}">YAZILAR</a></li>
+            <!-- Dropdown menu for HAQQIMIZDA -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
+                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                    <li><a class="dropdown-item" href="#">Biz Kimik</a></li>
+                    <li><a class="dropdown-item" href="#">Yazı Qəbulu</a></li>
+                     <li><a class="dropdown-item" href="#">Abunə Ol</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Mobilde burger menü -->
+    <nav class="navbar navbar-dark bg-dark d-lg-none">
+        <div class="container-fluid">
+            <!-- Navbar logo -->
+            <a class="navbar-brand" href="#"></a>
+            <!-- Navbar toggler (burger menü) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Mobile menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'prose_list' %}">NƏSR</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'poetry_list' %}">POEZİYA</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{% url 'writtings_list' %}">YAZILAR</a></li>
+                    <!-- Dropdown menu for HAQQIMIZDA in mobile -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
+                        <ul class="dropdown-menu" aria-labelledby="mobileAboutDropdown">
+                            <li><a class="dropdown-item" href="#">Biz Kimik</a></li>
+                            <li><a class="dropdown-item" href="#">Yazı Qəbulu</a></li>
+                            <li><a class="dropdown-item" href="#">Abunə Ol</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        .nav-link {
+            transition: color 0.3s ease; /* Rəng keçidini daha gözəl etmək üçün */
+        }
+
+        .nav-link:hover {
+            color: rgb(191, 61, 35) !important; /* Hover zamanı istədiyiniz rəng */
+        }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</header>
