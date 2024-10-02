@@ -1,5 +1,5 @@
-# SQLite database file
-db.sqlite3
-
-# Environment variables file
-.env
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
