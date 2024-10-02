@@ -1,8 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-{% include 'base.html' %}
-<body>
-{% include 'header.html' %}
-
+{% block content %}
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-9 mx-auto d-flex flex-column" style="padding-left: 75px;">
@@ -35,5 +33,4 @@
             </div>
         </div>
     </div>
-    {% include 'footer.html' %}
-</body>
+    {% endblock %}

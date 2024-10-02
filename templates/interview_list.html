@@ -1,7 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-{% include 'base.html' %}
-<body>
-   {% include 'header.html' %}
+{% block content %}
 
    <main class="container mt-4">
       <div class="row">
@@ -39,5 +38,4 @@
          </div>
       </div>
    </main>
-   {% include 'footer.html' %}
-</body>
+   {% endblock %}

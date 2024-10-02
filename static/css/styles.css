@@ -13,11 +13,11 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;  Burayı kaldır */
     min-height: 100vh;
-    margin: 0;
 }
+
+
 
 header {
     background: #333;
@@ -68,15 +68,16 @@ nav ul li a {
 }
 
 main {
-    flex: 1;
+    padding-top: 2rem;
 }
-
 footer {
     background: #333;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
     width: 100%;
+    /* Sayfanın en altında kalması için */
+    position: relative;
 }
 
 /* Header section */
@@ -106,6 +107,7 @@ footer {
 
 .container .row>* {
     padding-right: 0;
+    padding-left: 0;
 }
 
 .image-preview img {
@@ -277,6 +279,9 @@ footer {
 @media (max-width: 768px) {
     .news-card {
         margin-bottom: 20px;
+    }
+    .nav-link {
+        color: #ffffff !important;
     }
 }
 

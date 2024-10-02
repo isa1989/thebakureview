@@ -1,8 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-{% include 'base.html' %}
-<body>
-   {% include 'header.html' %}
-
+{% block content %}
    <main class="container mt-4">
       <div class="row">
          <!-- Sol Taraf: 12 birim, 4 sütunlu düzen -->
@@ -39,5 +37,4 @@
          </div>
       </div>
    </main>
-   {% include 'footer.html' %}
-</body>
+   {% endblock %}
