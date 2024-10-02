@@ -33,6 +33,7 @@ header h1 {
     text-align: center;
     color: #000;
     font-weight: 580;
+
 }
 
 .container {
@@ -112,6 +113,7 @@ footer {
 
 .container .row>* {
     padding-right: 0;
+    padding-left: 0;
 }
 
 .image-preview img {
@@ -183,14 +185,30 @@ footer {
     }
 
     .articles-grid {
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
+        /* Öğeleri dikey hizala */
+    }
+
+    .article-card {
+        margin-bottom: 15px;
+        /* Her kart arasında boşluk bırak */
     }
 
     .nav-link {
         color: #ffffff;
         /* Mobil sürüm rengi */
     }
+
+    .site-title {
+        font-size: 2rem;
+        /* Daha küçük başlık boyutu */
+    }
+
+
+
 }
+
 
 /* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
 .article-list {
@@ -334,4 +352,8 @@ footer {
 .nav-link:hover {
     color: rgb(191, 61, 35);
     /* İstədiyiniz rəng */
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
 }
