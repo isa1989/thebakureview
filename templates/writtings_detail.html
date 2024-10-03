@@ -1,33 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-
-    <div class="container mt-4">
+    <div class="detail-container mt-4">
         <div class="row">
-            <div class="col-md-9 mx-auto d-flex flex-column" style="padding-left: 75px;"> <!-- Soldan əlavə boşluq %50 artırıldı -->
-                <h2 style="font-size: 2.5em; margin-bottom: 0;">{{ writtings.title }}</h2>
-                <div style="width: 75%; margin-bottom: 5px;">
-                    <hr style="margin: 0; border-top: 1px solid #000; width: 100%;">
-                </div>
-                <div style="display: flex; justify-content: space-between; width: 75%; margin: 0; padding-top: 5px;">
+            <div class="col-md-9 mx-auto d-flex flex-column">
+                <h2 class="news-title">{{ writtings.title }}</h2>
+                <div class="divider"></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 75%; margin: 0; padding-top: 5px;">
                     <p class="author" style="font-size: 1.5em; margin: 0;">{{ writtings.author }}</p>
-                    <span style="font-size: 1.5em;">{{ writtings.created_at|date:"d F Y" }}</span>
+                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ writtings.created_at|date:"d F Y" }}</span>
                 </div>
-                <div class="mb-4" style="flex-grow: 1;">
-                    <img src="{{ writtings.image.url }}" class="img-fluid" alt="{{ writtings.title }}" style="width: 75%; height: auto; margin-top: 20px;">
+                <div class="image-container">
+                    <img src="{{ writtings.image.url }}" alt="{{ writtings.title }}" class="img-fluid news-image">
                 </div>
-                <p style="font-size: 1.2em; margin-top: 20px; width: 75%;"> <!-- Burada margin-top ekleyerek boşluk oluşturdum -->
-                    {{ writtings.content }}
-                </p>
+                <p class="news-content">{{ writtings.content }}</p>
             </div>
-            <div class="col-md-3 d-flex flex-column" style="margin-top: 2.5em; padding-right: 70px;">
-                <h4 style="margin-bottom: 1em;">Arxivimizdən</h4>
+            <div class="col-md-3 d-flex flex-column archive-container">
+                <h4 class="archive-title">Arxivimizdən</h4>
                 <ul class="list-unstyled">
                     {% for related in related_writtings %}
                     <li class="mb-3">
-                        <img src="{{ related.image.url }}" class="img-fluid" alt="{{ related.title }}" style="width: 100%; height: auto;">
-                        <a href="{% url 'writtings_detail' related.id %}" style="color: black; text-decoration: none;">{{ related.title }}</a>
+                        <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
+                        <a href="{% url 'writtings_detail' related.id %}" class="archive-link">{{ related.title }}</a>
                         <p class="author">Müəllif: {{ related.author }}</p>
                     </li>
                     {% endfor %}
@@ -35,4 +29,4 @@
             </div>
         </div>
     </div>
-   {% endblock %}
+{% endblock %}

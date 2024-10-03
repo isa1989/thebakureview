@@ -199,13 +199,64 @@ footer {
         /* Mobil sürüm rengi beyaz */
     }
 
-
-
     .site-title {
         font-size: 2rem;
         /* Daha küçük başlık boyutu */
     }
 
+    .divider {
+        /* Yeni stil */
+        width: 100% !important;
+        margin-bottom: 5px;
+        border-top: 1px solid #000;
+    }
+
+    .detail-container {
+        padding-left: 10px;
+        /* Sol boşluk */
+        padding-right: 10px;
+        /* Sağ boşluk */
+    }
+
+    .detail-container img {
+        width: 100%;
+        /* Fotoğrafın genişliğini %100 yap */
+        height: auto;
+        /* Yüksekliği otomatik ayarla */
+        margin-top: 20px;
+        /* Üstteki öğelerle arayı açmak için boşluk bırak */
+    }
+
+    .detail-container p {
+        font-size: 1em;
+        /* Metin boyutu ayarı */
+        margin-top: 0;
+        /* Üstte boşluk bırakma */
+        width: 100%;
+        /* Metin genişliğini %100 yap */
+        line-height: 1.5;
+        /* Satır yüksekliği */
+    }
+
+    .date {
+        font-size: 1em;
+        /* Tarih font boyutu */
+        line-height: 1;
+        /* Tek satırda kalmasını sağla */
+        white-space: nowrap;
+        /* Tek satırda kalması için */
+    }
+
+    .author {
+        margin-right: auto;
+        /* Yazar adını sola itmek için */
+    }
+
+    /* Çizgi ile tarih arasında boşluk bırakma */
+    .date {
+        margin-left: 20px;
+        /* İsteğe bağlı olarak boşluk ekleyin */
+    }
 
 
 
@@ -353,4 +404,84 @@ footer {
 
 .mt-3 {
     margin-top: 1rem !important;
+}
+
+.detail-container {
+    /* Yeni stil */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.news-title {
+    /* Yeni stil */
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+.divider {
+    /* Yeni stil */
+    width: 75%;
+    margin-bottom: 5px;
+    border-top: 1px solid #000;
+}
+
+.news-meta {
+    /* Yeni stil */
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0;
+    padding-top: 5px;
+}
+
+.date {
+    /* Yeni stil */
+    font-size: 1.5em;
+}
+
+.image-container {
+    /* Yeni stil */
+    flex-grow: 1;
+    margin-top: 20px;
+}
+
+.news-image {
+    /* Yeni stil */
+    width: 75%;
+    height: auto;
+}
+
+.news-content {
+    /* Yeni stil */
+    font-size: 1.2em;
+    margin-top: 20px;
+    width: 75%;
+}
+
+.archive-container {
+    /* Yeni stil */
+    margin-top: 2.5em;
+    padding-right: 70px;
+}
+
+.archive-title {
+    /* Yeni stil */
+    margin-bottom: 1em;
+}
+
+.archive-image {
+    /* Yeni stil */
+    width: 100%;
+    height: auto;
+}
+
+.archive-link {
+    /* Yeni stil */
+    color: black;
+    text-decoration: none;
+}
+
+.archive-link:hover {
+    /* Yeni stil */
+    text-decoration: underline;
 }
