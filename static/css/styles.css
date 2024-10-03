@@ -77,6 +77,13 @@ main {
     flex: 1;
 }
 
+.dropdown-menu {
+    background-color: #343a40;
+    /* Düşük arka plan rengi */
+    border: none;
+    /* Kenarları kaldırmak için isteğe bağlı */
+}
+
 footer {
     background: #333;
     color: #fff;

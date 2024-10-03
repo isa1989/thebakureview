@@ -7,6 +7,8 @@
     <title>{% block title %}THE BAKU REVIEW{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 <body>
     <!-- Header Section -->
@@ -32,7 +34,12 @@
                         <li><a class="dropdown-item" href="#">Abunə Ol</a></li>
                     </ul>
                 </li>
-                
+                <li class="nav-item d-flex align-items-center">
+                    <a href="#" id="searchToggle" class="nav-link text-white me-2">
+                        <i class="bi bi-search"></i>
+                    </a>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Axtar..." style="display: none; width: 200px;"/>
+                </li>
             </ul>
         </nav>
 
@@ -49,7 +56,7 @@
                         <li class="nav-item"><a class="nav-link text-white" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{% url 'writtings_list' %}">YAZILAR</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
                             <ul class="dropdown-menu" aria-labelledby="mobileAboutDropdown">
                                 <li><a class="dropdown-item text-white" href="#">Biz Kimik</a></li>
                                 <li><a class="dropdown-item text-white" href="#">Yazı Qəbulu</a></li>
@@ -74,5 +81,21 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('searchToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const searchInput = document.getElementById('searchInput');
+            const searchText = document.getElementById('searchText');
+            
+            if (searchInput.style.display === 'none' || searchInput.style.display === '') {
+                searchInput.style.display = 'block'; // Arama alanını göster
+                searchText.style.display = 'none'; // "Axtar..." metnini gizle
+                searchInput.focus(); // Arama alanını odakla
+            } else {
+                searchInput.style.display = 'none'; // Arama alanını gizle
+                searchText.style.display = 'inline'; // "Axtar..." metnini göster
+            }
+        });
+    </script>
 </body>
 </html>
