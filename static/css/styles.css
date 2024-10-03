@@ -77,8 +77,12 @@ main {
     flex: 1;
 }
 
+.bg-dark {
+    background-color: #000 !important;
+}
+
 .dropdown-menu {
-    background-color: #343a40;
+    background-color: #000;
     /* Düşük arka plan rengi */
     border: none;
     /* Kenarları kaldırmak için isteğe bağlı */
@@ -267,6 +271,25 @@ footer {
     .date {
         margin-left: 20px;
         /* İsteğe bağlı olarak boşluk ekleyin */
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: static;
+        float: none;
+        background-color: #000;
+        /* Arka plan siyah */
+        text-align: center;
+        /* İçerikleri ortala */
+    }
+
+    .navbar-nav .dropdown-item {
+        color: #fff;
+        /* Yazı rengi beyaz */
+    }
+
+    .navbar-nav .dropdown-item:hover {
+        background-color: #333;
+        /* Üzerine gelindiğinde koyulaşan arka plan */
     }
 
 
