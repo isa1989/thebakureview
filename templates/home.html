@@ -6,11 +6,12 @@
 <div class="container mt-0">
     <div class="row align-items-stretch">
         <div class="col-md-5">
-            <div class="image-preview">
+            <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
                 <img id="articleImage" class="img-fluid" src="{% static 'images/article1.jpg' %}" alt="Article 1 Image">
             </div>
         </div>
-        <div class="col-md-7 article-list">
+        <!-- Web için görünür olan kısım -->
+        <div class="col-md-7 article-list d-none d-md-block">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" data-image="{% static 'images/article1.jpg' %}">
                     <strong>1. Dostoyevski: saniyədə 16 kadr</strong>
@@ -33,6 +34,49 @@
                     <p class="author-name">Yazar Adı 5</p>
                 </li>
             </ul>
+        </div>
+
+        <!-- Mobil için görünür olan kısım -->
+        <div class="col-md-7 article-list d-block d-md-none">
+            <div class="card mb-3" style="background-color: #000; color: white;">
+                <div class="card-body">
+                    <img src="{% static 'images/article1.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
+                    <p class="author-name">Fyodor Dostoyevski</p>
+                    <p class="article-title">1. aaaaaaaaaaaaaaaa: saniyədə 16 kadr</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" style="background-color: #000; color: white;">
+                <div class="card-body">
+                    <img src="{% static 'images/article2.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
+                    <p class="author-name">Lev Tolstoy</p>
+                    <p class="article-title">2. Lev Tolstoy və ailə - Pavel Basinski</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" style="background-color: #000; color: white;">
+                <div class="card-body">
+                    <img src="{% static 'images/article3.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
+                    <p class="author-name">Yazar Adı 3</p>
+                    <p class="article-title">3. Makale Başlığı 3</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" style="background-color: #000; color: white;">
+                <div class="card-body">
+                    <img src="{% static 'images/article4.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
+                    <p class="author-name">Yazar Adı 4</p>
+                    <p class="article-title">4. Makale Başlığı 4</p>
+                </div>
+            </div>
+
+            <div class="card mb-3" style="background-color: #000; color: white;">
+                <div class="card-body">
+                    <img src="{% static 'images/article2.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
+                    <p class="author-name">Yazar Adı 5</p>
+                    <p class="article-title">5. Makale Başlığı 5</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

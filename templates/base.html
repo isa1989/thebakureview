@@ -11,8 +11,8 @@
 <body>
     <!-- Header Section -->
     <header class="bg-white text-white text-center py-4" style="margin-bottom: 20px;">
-        <h1 class="site-title d-flex justify-content-center align-items-center"> <!-- Flexbox ile ortalama -->
-            <img src="{% static 'images/logo.png' %}" alt="Logo" class="me-2" style="width: 70px; height: auto;"> <!-- Logo -->
+        <h1 class="site-title d-flex justify-content-center align-items-center">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="me-2" style="width: 70px; height: auto;">
             <a href="/" style="text-decoration: none; color: inherit;">THE BAKU REVIEW</a>
         </h1>
         
@@ -38,7 +38,7 @@
 
         <nav class="navbar navbar-dark bg-dark d-lg-none">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -51,24 +51,17 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
                             <ul class="dropdown-menu" aria-labelledby="mobileAboutDropdown">
-                                <li><a class="dropdown-item" href="#">Biz Kimik</a></li>
-                                <li><a class="dropdown-item" href="#">Yazı Qəbulu</a></li>
-                                <li><a class="dropdown-item" href="#">Abunə Ol</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Biz Kimik</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Yazı Qəbulu</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Abunə Ol</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+                
             </div>
         </nav>
-
-        <style>
-            .nav-link {
-                transition: color 0.3s ease;
-            }
-            .nav-link:hover {
-                color: rgb(191, 61, 35) !important;
-            }
-        </style>
+       
     </header>
 
     <main class="container mt-5">

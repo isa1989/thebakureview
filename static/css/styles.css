@@ -107,14 +107,12 @@ footer {
     height: 100%;
     display: flex;
     align-items: stretch;
-    padding-right: 0;
-    margin-right: 0;
-    padding-left: 0;
-    margin-left: 0;
+
 }
 
 .container .row>* {
-    padding-left: 0;
+    padding-left: 1;
+    padding-right: 0;
 }
 
 .image-preview img {
@@ -197,9 +195,11 @@ footer {
     }
 
     .nav-link {
-        color: #ffffff;
-        /* Mobil sürüm rengi */
+        color: #fff !important;
+        /* Mobil sürüm rengi beyaz */
     }
+
+
 
     .site-title {
         font-size: 2rem;
@@ -208,8 +208,13 @@ footer {
 
 
 
+
 }
 
+.navbar-toggler {
+    margin-left: auto;
+    /* İkonu sağa itme */
+}
 
 /* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
 .article-list {
@@ -297,12 +302,7 @@ footer {
     border-top-right-radius: 0 !important;
 }
 
-/* Responsive tasarım */
-@media (max-width: 768px) {
-    .news-card {
-        margin-bottom: 20px;
-    }
-}
+
 
 .pagination .page-item .page-link {
     color: black;
