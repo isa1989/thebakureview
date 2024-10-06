@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Biz Kimik{% endblock %}
+
+{% block content %}
+<div class="about-us-container">
+    <h1 style="text-align: center;">{{ about_us.title }}</h1>
+    <div class="about-us-content">
+        {% if about_us.image %}
+            <img src="{{ about_us.image.url }}" alt="{{ about_us.title }}" class="img-fluid">
+        {% endif %}
+        <div class="content-body">
+            {{ about_us.content|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

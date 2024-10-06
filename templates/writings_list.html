@@ -7,9 +7,9 @@
          <!-- Sol Taraf: 12 birim, 4 sütunlu düzen -->
          <div class="col-md-12">
             <div class="row">
-               {% for writting in writtings_list %}
+               {% for writting in writings_list %}
                <div class="col-md-3 mb-4">
-                  <a href="{% url 'writtings_detail' writting.id %}" class="card news-card" style="height: 100%; text-decoration: none; color: inherit;">
+                  <a href="{% url 'writings_detail' writting.id %}" class="card news-card" style="height: 100%; text-decoration: none; color: inherit;">
                      <img src="{{ writting.image.url }}" class="card-img-top" alt="Haber Fotoğrafı">
                      <div class="card-body">
                         <h5 class="card-title">{{ writting.title }}</h5>

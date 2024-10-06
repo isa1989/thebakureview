@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Yazı Qəbulu{% endblock %}
+
+{% block content %}
+<div class="about-us-container">
+    <h1 style="text-align: center;">{{ submission.title }}</h1>
+    <div class="submission-content">
+        <div class="content-body">
+            {{ submission.content|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

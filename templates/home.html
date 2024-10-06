@@ -1,110 +1,62 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Makale Detayı - THE BAKU REVIEW{% endblock %}
+{% block title %}THE BAKU REVIEW{% endblock %}
 
 {% block content %}
 <div class="container mt-0">
     <div class="row align-items-stretch">
         <div class="col-md-5">
             <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
-                <img id="articleImage" class="img-fluid" src="{% static 'images/article1.jpg' %}" alt="Article 1 Image">
+                {% if top_5_articles %}
+                    <img id="articleImage" class="img-fluid" src="{{ top_5_articles.0.image.url }}" alt="{{ top_5_articles.0.title }}">
+                {% else %}
+                    <img id="articleImage" class="img-fluid" src="{% static 'images/default.png' %}" alt="Default Image">
+                {% endif %}
             </div>
         </div>
         <!-- Web için görünür olan kısım -->
         <div class="col-md-7 article-list d-none d-md-block">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" data-image="{% static 'images/article1.jpg' %}">
-                    <strong>1. Dostoyevski: saniyədə 16 kadr</strong>
-                    <p class="author-name">Fyodor Dostoyevski</p>
-                </li>
-                <li class="list-group-item" data-image="{% static 'images/article2.jpg' %}">
-                    <strong>2. Lev Tolstoy və ailə - Pavel Basinski</strong>
-                    <p class="author-name">Lev Tolstoy</p>
-                </li>
-                <li class="list-group-item" data-image="{% static 'images/article3.jpg' %}">
-                    <strong>3. Makale Başlığı 3</strong>
-                    <p class="author-name">Yazar Adı 3</p>
-                </li>
-                <li class="list-group-item" data-image="{% static 'images/article4.jpg' %}">
-                    <strong>4. Makale Başlığı 4</strong>
-                    <p class="author-name">Yazar Adı 4</p>
-                </li>
-                <li class="list-group-item" data-image="{% static 'images/article2.jpg' %}">
-                    <strong>5. Makale Başlığı 5</strong>
-                    <p class="author-name">Yazar Adı 5</p>
-                </li>
+                {% for article in top_5_articles %}
+                    <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;" onclick="location.href='{{ article.source_model }}'">
+                        <strong>{{ forloop.counter }}. {{ article.title }}</strong>
+                        <p class="author-name">{{ article.author }}</p>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
+        
 
         <!-- Mobil için görünür olan kısım -->
         <div class="col-md-7 article-list d-block d-md-none">
-            <div class="card mb-3" style="background-color: #000; color: white;">
-                <div class="card-body">
-                    <img src="{% static 'images/article1.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
-                    <p class="author-name">Fyodor Dostoyevski</p>
-                    <p class="article-title">1. aaaaaaaaaaaaaaaa: saniyədə 16 kadr</p>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="background-color: #000; color: white;">
-                <div class="card-body">
-                    <img src="{% static 'images/article2.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
-                    <p class="author-name">Lev Tolstoy</p>
-                    <p class="article-title">2. Lev Tolstoy və ailə - Pavel Basinski</p>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="background-color: #000; color: white;">
-                <div class="card-body">
-                    <img src="{% static 'images/article3.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
-                    <p class="author-name">Yazar Adı 3</p>
-                    <p class="article-title">3. Makale Başlığı 3</p>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="background-color: #000; color: white;">
-                <div class="card-body">
-                    <img src="{% static 'images/article4.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
-                    <p class="author-name">Yazar Adı 4</p>
-                    <p class="article-title">4. Makale Başlığı 4</p>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="background-color: #000; color: white;">
-                <div class="card-body">
-                    <img src="{% static 'images/article2.jpg' %}" class="card-img-top" alt="Makale Fotoğrafı">
-                    <p class="author-name">Yazar Adı 5</p>
-                    <p class="article-title">5. Makale Başlığı 5</p>
-                </div>
-            </div>
+            {% for article in top_5_articles %}
+                <a href="{{ article.source_model }}" class="text-decoration-none">
+                    <div class="card mb-3" style="background-color: #000; color: white;">
+                        <div class="card-body">
+                            <img src="{{ article.image.url }}" class="card-img-top" alt="Makale Fotoğrafı">
+                            <p class="author-name">{{ article.author }}</p>
+                            <p class="article-title">{{ forloop.counter }}. {{ article.title }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
+        
     </div>
 </div>
 
 <main class="container mt-3">
     <section class="articles-grid">
-        <div class="article-card">
-            <img src="{% static 'images/article1.jpg' %}" alt="Makale Fotoğrafı">
-            <p class="author-name">Yazar Adı 1</p>
-            <p class="article-title">Makale Başlığı 1</p>
-        </div>
-        <div class="article-card">
-            <img src="{% static 'images/article2.jpg' %}" alt="Makale Fotoğrafı">
-            <p class="author-name">Yazar Adı 2</p>
-            <p class="article-title">Makale Başlığı 2</p>
-        </div>
-        <div class="article-card">
-            <img src="{% static 'images/article3.jpg' %}" alt="Makale Fotoğrafı">
-            <p class="author-name">Yazar Adı 3</p>
-            <p class="article-title">Makale Başlığı 3</p>
-        </div>
-        <div class="article-card">
-            <img src="{% static 'images/article1.jpg' %}" alt="Makale Fotoğrafı">
-            <p class="author-name">Yazar Adı 4</p>
-            <p class="article-title">Makale Başlığı 4</p>
-        </div>
+        {% for article in remaining_articles %}
+            <a href="{{ article.source_model }}" class="article-card text-decoration-none">
+                <img src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid">
+                <p class="author-name" style="color: black;">{{ article.author }}</p>
+                <p class="article-title">{{ forloop.counter }}. {{ article.title }}</p>
+            </a>
+        {% endfor %}
     </section>
 </main>
+
 
 <script>
     const articles = document.querySelectorAll('.list-group-item');

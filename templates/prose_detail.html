@@ -7,7 +7,11 @@
                 <h2 class="news-title">{{ prose.title }}</h2>
                 <div class="divider"></div>
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 75%; margin: 0; padding-top: 5px;">
-                    <p class="author" style="font-size: 1.5em; margin: 0;">{{ prose.author }}</p>
+                    <p class="author" style="font-size: 1.5em; margin: 0;">
+                        <a href="{% url 'author_detail' prose.author %}" style="color: inherit; text-decoration: none;">
+                            {{ prose.author }}
+                        </a>
+                    </p>
                     <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ prose.created_at|date:"d F Y" }}</span>
                 </div>
                 <div class="image-container">

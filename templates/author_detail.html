@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        h3 a {
+            color: black;
+            text-decoration: none;
+        }
+
+        h3 a:hover {
+            text-decoration: underline; 
+        }
+    </style>
+
+    <h2>Bütün Yazılar: {{ author }}</h2>
+    <div class="divider"></div> 
+    <ul class="list-unstyled">
+        {% for writing in all_writings %}
+            <li>
+                <h3>
+                    <a href="{% url writing.model_name|add:'_detail' writing.id %}">
+                        {{ writing.title }}
+                    </a>
+                </h3>
+                <p>{{ writing.content|slice:":50"|truncatewords:25|safe }}...</p> 
+                <div class="divider"></div> 
+            </li>
+        {% empty %}
+            <p>Yazarın yazıları tapılmadı.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

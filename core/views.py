@@ -1,7 +1,22 @@
+import random
+from itertools import chain
+
+from django.db.models import Q, Value
+from django.db.models.functions import Concat
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.views.generic import DetailView
 
-from .models import Interview, News, Poetry, Prose, Writtings
+from .models import (
+    AboutUs,
+    Home,
+    Interview,
+    News,
+    Poetry,
+    Prose,
+    SubmissionGuidelines,
+    Writings,
+)
 
 
 def custom_upload_file(request):
@@ -12,7 +27,18 @@ def custom_upload_file(request):
 
 
 def home(request):
-    return render(request, "home.html")
+    home_articles = (
+        Home.objects.filter(is_active=True)
+        .only("title", "author", "image", "created_at")
+        .order_by("-created_at")[:21]
+    )
+    top_5_articles = home_articles[:5]
+    remaining_articles = home_articles[5:]
+    context = {
+        "top_5_articles": top_5_articles,
+        "remaining_articles": remaining_articles,
+    }
+    return render(request, "home.html", context)
 
 
 def news_list(request):
@@ -35,14 +61,17 @@ def prose_list(request):
     return render(request, "prose_list.html", context)
 
 
-def prose_detail(request, prose_id):
-    prose_item = get_object_or_404(Prose, id=prose_id, is_active=True)
-    related_prose = Prose.objects.filter(is_active=True).exclude(id=prose_id)[:5]
-    return render(
-        request,
-        "prose_detail.html",
-        {"prose": prose_item, "related_prose": related_prose},
-    )
+class ProseDetailView(DetailView):
+    model = Prose
+    template_name = "prose_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        prose_id = self.object.id
+        context["related_prose"] = Prose.objects.filter(is_active=True).exclude(
+            id=prose_id
+        )[:5]
+        return context
 
 
 def poetry_list(request):
@@ -61,21 +90,21 @@ def poetry_detail(request, poetry_id):
     )
 
 
-def writtings_list(request):
-    writtings_list = Writtings.objects.filter(is_active=True)
-    context = {"writtings_list": writtings_list}
-    return render(request, "writtings_list.html", context)
+def writings_list(request):
+    writings_list = Writings.objects.filter(is_active=True)
+    context = {"writings_list": writings_list}
+    return render(request, "writings_list.html", context)
 
 
-def writtings_detail(request, writtings_id):
-    writtings_item = get_object_or_404(Writtings, id=writtings_id, is_active=True)
-    related_writtings = Writtings.objects.filter(is_active=True).exclude(
-        id=writtings_id
-    )[:5]
+def writings_detail(request, writings_id):
+    writings_item = get_object_or_404(Writings, id=writings_id, is_active=True)
+    related_writings = Writings.objects.filter(is_active=True).exclude(id=writings_id)[
+        :5
+    ]
     return render(
         request,
-        "writtings_detail.html",
-        {"writtings": writtings_item, "related_writtings": related_writtings},
+        "writings_detail.html",
+        {"writings": writings_item, "related_writings": related_writings},
     )
 
 
@@ -95,3 +124,68 @@ def interview_detail(request, interview_id):
         "interview_detail.html",
         {"interviews": interview_item, "related_interviews": related_interviews},
     )
+
+
+def author_detail(request, author):
+    queries = Q(author=author, is_active=True)
+
+    all_writings = list(
+        chain(
+            Prose.objects.filter(queries)
+            .values("id", "title", "content")
+            .annotate(model_name=Value("prose")),
+            Poetry.objects.filter(queries)
+            .values("id", "title", "content")
+            .annotate(model_name=Value("poetry")),
+            Writings.objects.filter(queries)
+            .values("id", "title", "content")
+            .annotate(model_name=Value("writings")),
+            Interview.objects.filter(queries)
+            .values("id", "title", "content")
+            .annotate(model_name=Value("interview")),
+        )
+    )
+
+    context = {
+        "author": author,
+        "all_writings": all_writings,
+    }
+    return render(request, "author_detail.html", context)
+
+
+def search_all_view(request):
+    query = request.GET.get("q", "")
+    results = []
+
+    if query:
+        search_conditions = (
+            Q(title__icontains=query)
+            | Q(content__icontains=query)
+            | Q(author__icontains=query)
+        )
+
+        # Aktif olanlar için tüm modellerde arama yap
+        models = [News, Prose, Poetry, Writings, Interview]
+
+        for model in models:
+            results.extend(model.objects.filter(search_conditions, is_active=True))
+
+    return render(request, "search_results.html", {"query": query, "results": results})
+
+
+class AboutUsView(DetailView):
+    model = AboutUs
+    template_name = "about_us.html"
+    context_object_name = "about_us"
+
+    def get_object(self):
+        return AboutUs.objects.first()
+
+
+class SubmissionGuidelinesView(DetailView):
+    model = AboutUs
+    template_name = "submission.html"
+    context_object_name = "submission"
+
+    def get_object(self):
+        return SubmissionGuidelines.objects.first()

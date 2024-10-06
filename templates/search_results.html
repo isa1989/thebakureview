@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Axtarış Nəticələri{% endblock %}
+
+{% block content %}
+<style>
+    .black-link {
+        color: black; /* Bağlantı rengi siyah */
+        text-decoration: none; /* Alt çizgiyi kaldırır */
+    }
+    
+    .black-link:hover {
+        text-decoration: underline; /* Hover durumunda alt çizgi ekler */
+    }
+
+    /* Liste stilleri */
+    ul {
+        list-style-type: none; /* Yumru noktaları kaldırır */
+        padding: 0; /* Varsayılan padding'i kaldırır */
+    }
+
+    li {
+        border-bottom: 1px solid #ccc; /* Her öğe arasında çizgi çizer */
+        padding: 10px 0; /* Yukarı ve aşağıdan boşluk verir */
+    }
+
+    li:last-child {
+        border-bottom: none; /* Son öğenin altında çizgi olmaması için */
+    }
+</style>
+
+<h2>Axtarış Nəticələri üçün "{{ query }}"</h2>
+
+{% if results %}
+    <ul>
+    {% for item in results %}
+        <li><a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Heç bir nəticə tapılmadı.</p>
+{% endif %}
+{% endblock %}

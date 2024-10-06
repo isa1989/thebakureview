@@ -8,7 +8,11 @@
                 <h2 class="news-title">{{ interviews.title }}</h2>
                 <div class="divider"></div>
                 <div class="d-flex justify-content-between align-items-center" style="width: 75%; margin: 0; padding-top: 5px;">
-                    <p class="author" style="font-size: 1.5em; margin: 0;">{{ interviews.author }}</p>
+                    <p class="author" style="font-size: 1.5em; margin: 0;">
+                        <a href="{% url 'author_detail' interviews.author %}" style="color: inherit; text-decoration: none;">
+                            {{ interviews.author }}
+                        </a>
+                    </p>
                     <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ interviews.created_at|date:"d F Y" }}</span>
                 </div>
                 <div class="image-container">

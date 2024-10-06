@@ -171,7 +171,20 @@ footer {
 
 .article-title {
     margin: 0;
-    color: #333;
+    color: #ffffff;
+}
+
+.author {
+    margin-right: auto;
+    color: red;
+    /* Yazar adını sola itmek için */
+}
+
+/* Çizgi ile tarih arasında boşluk bırakma */
+.date {
+    margin-left: 20px;
+    color: red;
+    /* İsteğe bağlı olarak boşluk ekleyin */
 }
 
 /* Responsive tasarım */
@@ -194,9 +207,17 @@ footer {
         padding: 0;
     }
 
-    .article-list {
-        margin-top: 1rem;
+    .container.mt-0 {
+        padding-left: 0;
+        /* Sol boşluğu kaldır */
+        padding-right: 0;
+        /* Sağ boşluğu kaldır */
+        background-color: #000;
+        /* Arka plan rengi siyah */
+
+
     }
+
 
     .articles-grid {
         display: flex;
@@ -262,16 +283,12 @@ footer {
         /* Tek satırda kalması için */
     }
 
-    .author {
-        margin-right: auto;
-        /* Yazar adını sola itmek için */
+    .navbar-nav .nav-link {
+        border-bottom: none;
+        /* Alt çizgiyi kaldır */
     }
 
-    /* Çizgi ile tarih arasında boşluk bırakma */
-    .date {
-        margin-left: 20px;
-        /* İsteğe bağlı olarak boşluk ekleyin */
-    }
+
 
     .navbar-nav .dropdown-menu {
         position: static;
@@ -309,6 +326,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 .article-list h2 {

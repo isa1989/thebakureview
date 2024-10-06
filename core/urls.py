@@ -7,17 +7,23 @@ urlpatterns = [
     path("news/", views.news_list, name="news_list"),
     path("news/<int:id>/", views.news_detail, name="news_detail"),
     path("prose/", views.prose_list, name="prose_list"),
-    path("prose/<int:prose_id>/", views.prose_detail, name="prose_detail"),
+    path("prose/<int:pk>/", views.ProseDetailView.as_view(), name="prose_detail"),
     path("poetry/", views.poetry_list, name="poetry_list"),
     path("poetry/<int:poetry_id>/", views.poetry_detail, name="poetry_detail"),
-    path("writtings/", views.writtings_list, name="writtings_list"),
-    path(
-        "writtings/<int:writtings_id>/", views.writtings_detail, name="writtings_detail"
-    ),
+    path("writings/", views.writings_list, name="writings_list"),
+    path("writings/<int:writings_id>/", views.writings_detail, name="writings_detail"),
     path("interviews/", views.interview_list, name="interview_list"),
     path(
         "interviews/<int:interview_id>/",
         views.interview_detail,
         name="interview_detail",
     ),
+    path("about-us/", views.AboutUsView.as_view(), name="about_us"),
+    path(
+        "submission-guidelines/",
+        views.SubmissionGuidelinesView.as_view(),
+        name="sub_guidelines",
+    ),
+    path("author/<str:author>/", views.author_detail, name="author_detail"),
+    path("search/", views.search_all_view, name="search_all"),
 ]
