@@ -3,12 +3,10 @@
 {% block title %}Yazı Qəbulu{% endblock %}
 
 {% block content %}
-<div class="about-us-container">
-    <h1 style="text-align: center;">{{ submission.title }}</h1>
-    <div class="submission-content">
-        <div class="content-body">
-            {{ submission.content|safe }}
-        </div>
+<div class="submission-content">
+    <h1 class="text-center">{{ submission.title }}</h1>
+    <div class="content-body" style="max-width: 1200px; margin: 0 auto;"> <!-- Menü genişliğine göre ayarlama -->
+        {{ submission.content|safe }}
     </div>
 </div>
 {% endblock %}

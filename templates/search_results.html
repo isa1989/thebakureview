@@ -7,6 +7,9 @@
     .black-link {
         color: black; /* Bağlantı rengi siyah */
         text-decoration: none; /* Alt çizgiyi kaldırır */
+        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Bağlantı font ailesi */
+        font-size: 1.25rem; /* Bağlantı boyutu, gerektiği gibi ayarlayın */
+        text-transform: uppercase; /* Tüm harfleri büyük yapar */
     }
     
     .black-link:hover {
@@ -20,12 +23,17 @@
     }
 
     li {
-        border-bottom: 1px solid #ccc; /* Her öğe arasında çizgi çizer */
         padding: 10px 0; /* Yukarı ve aşağıdan boşluk verir */
     }
 
-    li:last-child {
-        border-bottom: none; /* Son öğenin altında çizgi olmaması için */
+    li:not(:last-child) {
+        border-bottom: 1px solid #ccc; /* Her öğe arasında çizgi çizer, son öğeden önce */
+    }
+
+    h2 {
+        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Başlık font ailesi */
+        font-size: 2rem; /* Başlık boyutu */
+        text-transform: uppercase; /* Tüm harfleri büyük yapar */
     }
 </style>
 
@@ -34,7 +42,10 @@
 {% if results %}
     <ul>
     {% for item in results %}
-        <li><a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a></li>
+        <li>
+            <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
+            <p>{{ item.content|slice:":50"|truncatewords:25|safe }}...</p>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
