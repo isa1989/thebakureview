@@ -6,20 +6,29 @@
 }
 
 .logo {
-    width: auto; /* Logonun genişliğini otomatik ayarla */
-    height: 100%; /* Logonun yüksekliğini başlığın yüksekliğiyle eşitle */
-    max-height: 4.5rem; /* Maksimum yükseklik, başlık ile aynı olmasını sağlar */
+    width: auto;
+    /* Logonun genişliğini otomatik ayarla */
+    height: 100%;
+    /* Logonun yüksekliğini başlığın yüksekliğiyle eşitle */
+    max-height: 4.5rem;
+    /* Maksimum yükseklik, başlık ile aynı olmasını sağlar */
     margin-right: 10px;
-    
-    
+
+
 }
+
 .prose-card .card-title {
-    color: inherit; /* Varsayılan rengin korunması için */
-    transition: color 0.3s; /* Geçiş efekti ekleme */
+    color: inherit;
+    /* Varsayılan rengin korunması için */
+    transition: color 0.3s;
+    /* Geçiş efekti ekleme */
 }
+
 .prose-card:hover .card-title {
-    color: rgb(191, 61, 35); /* Üzerine gelindiğinde renk değişimi */
+    color: rgb(191, 61, 35);
+    /* Üzerine gelindiğinde renk değişimi */
 }
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -84,9 +93,12 @@ nav ul li a {
 }
 
 main {
-    flex: 1; /* Ana içerik esnek alanı dolduracak */
-    margin-bottom: 50px; /* Footer ile arasındaki boşluk */
+    flex: 1;
+    /* Ana içerik esnek alanı dolduracak */
+    margin-bottom: 50px;
+    /* Footer ile arasındaki boşluk */
 }
+
 .bg-dark {
     background-color: #000 !important;
 }
@@ -150,7 +162,7 @@ footer {
 /* Makale grid düzeni */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -162,6 +174,8 @@ footer {
     height: auto;
     transition: none;
 }
+
+
 
 .article-card img {
     width: 100%;
@@ -176,27 +190,33 @@ footer {
 
 .author-name {
     margin: 0.5rem 0;
-    font-weight: bold;
+    font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .article-title {
     margin: 0;
     color: #000;
     transition: color 0.3s;
+    font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
+    /* Bağlantı font ailesi */
+
 }
+
 .article-card:hover .article-title {
-    color: rgb(191, 61, 35); /* Üzerine gelindiğinde renk değişimi */
+    color: rgb(191, 61, 35);
+    /* Üzerine gelindiğinde renk değişimi */
 }
+
 .author {
     margin-right: auto;
-    color:rgb(191, 61, 35);
+    color: rgb(191, 61, 35);
     /* Yazar adını sola itmek için */
 }
 
 /* Çizgi ile tarih arasında boşluk bırakma */
 .date {
     margin-left: 20px;
-    color:rgb(191, 61, 35);
+    color: rgb(191, 61, 35);
     /* İsteğe bağlı olarak boşluk ekleyin */
 }
 
@@ -249,12 +269,14 @@ footer {
     }
 
     .site-title {
-        font-size: 5vw; /* Daha küçük font boyutu */
+        font-size: 5vw;
+        /* Daha küçük font boyutu */
     }
-    
+
     .logo {
         width: auto;
-        height: 4.5vw; /* Mobilde daha küçük logo */
+        height: 4.5vw;
+        /* Mobilde daha küçük logo */
         margin-right: 5px;
     }
 
@@ -305,7 +327,7 @@ footer {
         border-bottom: none;
         /* Alt çizgiyi kaldır */
     }
-  
+
 
 
     .navbar-nav .dropdown-menu {
@@ -321,7 +343,7 @@ footer {
         color: #fff;
         /* Yazı rengi beyaz */
     }
-    
+
 
     .navbar-nav .dropdown-item:hover {
         background-color: #333;

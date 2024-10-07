@@ -48,14 +48,19 @@
 <main class="container mt-3">
     <section class="articles-grid">
         {% for article in remaining_articles %}
-            <a href="{{ article.source_model }}" class="article-card text-decoration-none">
-                <img src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid">
-                <p class="author-name" style="color: black;">{{ article.author }}</p>
-                <p class="article-title">{{ article.title }}</p>
-            </a>
+            <div class="article-card">
+                <a href="{{ article.source_model }}" class="text-decoration-none">
+                    <div class="article-image-wrapper">
+                        <img src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid">
+                    </div>
+                    <h3 class="article-title">{{ article.title }}</h3>   
+                    <h5 class="author-name" style="color: black;">{{ article.author }}</h5>
+                </a>
+            </div>
         {% endfor %}
     </section>
 </main>
+
 
 
 <script>
