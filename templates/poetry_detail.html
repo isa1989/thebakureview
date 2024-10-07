@@ -13,7 +13,7 @@
                             {{ poetry.author }}
                         </a>
                     </p>
-                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ poetry.created_at|date:"d F Y" }}</span>
+                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ poetry.created_at|date:"d F Y"|lower }}</span>
                 </div>
                 <div class="image-container">
                     <img src="{{ poetry.image.url }}" alt="{{ poetry.title }}" class="img-fluid news-image">

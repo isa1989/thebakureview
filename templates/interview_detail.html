@@ -13,7 +13,7 @@
                             {{ interviews.author }}
                         </a>
                     </p>
-                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ interviews.created_at|date:"d F Y" }}</span>
+                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ interviews.created_at|date:"d F Y"|lower }}</span>
                 </div>
                 <div class="image-container">
                     <img src="{{ interviews.image.url }}" alt="{{ interviews.title }}" class="img-fluid news-image">
