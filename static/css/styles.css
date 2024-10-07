@@ -179,11 +179,9 @@ footer {
 
 .article-card img {
     width: 100%;
-    /* Yükseklik otomatik, resmin orantılı kalmasını sağlar */
+    height: 350px;
     max-height: 350px;
-    /* Maksimum yükseklik ayarı */
     object-fit: cover;
-    /* Resmin kapsanmasını sağlar */
 }
 
 .article-card .author-name,
