@@ -51,7 +51,7 @@
             <a href="{{ article.source_model }}" class="article-card text-decoration-none">
                 <img src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid">
                 <p class="author-name" style="color: black;">{{ article.author }}</p>
-                <p class="article-title">{{ forloop.counter }}. {{ article.title }}</p>
+                <p class="article-title">{{ article.title }}</p>
             </a>
         {% endfor %}
     </section>

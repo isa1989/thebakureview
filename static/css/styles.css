@@ -181,9 +181,12 @@ footer {
 
 .article-title {
     margin: 0;
-    color: #ffffff;
+    color: #000;
+    transition: color 0.3s;
 }
-
+.article-card:hover .article-title {
+    color: rgb(191, 61, 35); /* Üzerine gelindiğinde renk değişimi */
+}
 .author {
     margin-right: auto;
     color:rgb(191, 61, 35);
