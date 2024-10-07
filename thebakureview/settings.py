@@ -257,9 +257,9 @@ CK_EDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "az"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Baku"
 
 USE_I18N = True
 

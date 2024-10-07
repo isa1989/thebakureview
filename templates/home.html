@@ -19,7 +19,7 @@
             <ul class="list-group list-group-flush">
                 {% for article in top_5_articles %}
                     <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;" onclick="location.href='{{ article.source_model }}'">
-                        <strong>{{ forloop.counter }}. {{ article.title }}</strong>
+                        <strong>{{ article.title }}</strong>
                         <p class="author-name">{{ article.author }}</p>
                     </li>
                 {% endfor %}
@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <img src="{{ article.image.url }}" class="card-img-top" alt="Makale Fotoğrafı">
                             <p class="author-name">{{ article.author }}</p>
-                            <p class="article-title">{{ forloop.counter }}. {{ article.title }}</p>
+                            <p class="article-title">{{ article.title }}</p>
                         </div>
                     </div>
                 </a>

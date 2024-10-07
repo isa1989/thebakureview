@@ -14,7 +14,7 @@
                      <img src="{{ interview.image.url }}" class="card-img-top" alt="Nəsr Fotoğrafı">
                      <div class="card-body">
                         <h5 class="card-title">{{ interview.title }}</h5>
-                        <p class="card-text"><small class="text-muted">Müəllif: {{ interview.author }}</small></p>
+                        <p class="card-text"><small class="text-muted">{{ interview.author }}</small></p>
                         <p class="card-text">{{ interview.content|truncatewords:1 |safe}}</p> <!-- 20 kelimeye kadar kısalt -->
                      </div>
                   </a>

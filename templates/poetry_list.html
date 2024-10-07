@@ -13,7 +13,7 @@
                      <img src="{{ poetry.image.url }}" class="card-img-top" alt="{{poetry.title}}">
                      <div class="card-body">
                         <h5 class="card-title">{{ poetry.title }}</h5>
-                        <p class="card-text"><small class="text-muted">Müəllif: {{ poetry.author }}</small></p>
+                        <p class="card-text"><small class="text-muted">{{ poetry.author }}</small></p>
                         <p class="card-text">{{ poetry.content|truncatewords:5 |safe}}</p> <!-- 20 kelimeye kadar kısalt -->
                      </div>
                   </a>

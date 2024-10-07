@@ -8,24 +8,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Menü Öğeleri için CSS */
+        .nav-link {
+            color: white; /* Normal durum rengi */
+            transition: color 0.3s; /* Renk geçiş efekti */
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: rgb(191, 61, 35) !important; /* Hover veya aktif durumda RGB rengi */
+        }
+
+        /* Navbar Toggler İkonu için Beyaz Renk */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5); /* Toggler kenar rengi */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30"%3E%3Cpath stroke="white" stroke-width="3" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E'); /* Beyaz ikon */
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="bg-white text-white text-center py-4" style="margin-bottom: 20px;">
-        <h1 class="site-title d-flex justify-content-center align-items-center">
-            <img src="{% static 'images/logo.png' %}" alt="Logo" class="me-2" style="width: 70px; height: auto;">
-            <a href="/" style="text-decoration: none; color: inherit;">THE BAKU REVIEW</a>
+        <h1 class="site-title">
+            <a href="/" class="d-flex align-items-center" style="text-decoration: none; color: inherit;">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo" />
+                <span>THE BAKU REVIEW</span>
+            </a>
         </h1>
 
-        <nav class="d-none d-lg-block">
+        <nav class="d-none d-md-block">
             <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link text-white" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{% url 'prose_list' %}">NƏSR</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{% url 'poetry_list' %}">POEZİYA</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{% url 'writings_list' %}">YAZILAR</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'prose_list' %}">NƏSR</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'poetry_list' %}">POEZİYA</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'writings_list' %}">YAZILAR</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown" style="background-color: white;">
                         <li><a class="dropdown-item" href="{% url 'about_us' %}" style="color: black;">Biz Kimik</a></li>
                         <li><a class="dropdown-item" href="{% url 'sub_guidelines' %}" style="color: black;">Yazı Qəbulu</a></li>
@@ -33,7 +55,7 @@
                     </ul>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                    <a href="#" id="searchToggle" class="nav-link text-white me-2">
+                    <a href="#" id="searchToggle" class="nav-link me-2">
                         <i class="bi bi-search"></i>
                     </a>
                     <input type="text" id="searchInput" class="form-control" placeholder="Axtar..." style="display: none; width: 200px;" onkeydown="if(event.key === 'Enter') { search_all(); }"/>
@@ -44,17 +66,17 @@
         <nav class="navbar navbar-dark bg-dark d-lg-none">
             <div class="container-fluid">
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span> <!-- Beyaz ikon -->
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{% url 'prose_list' %}">NƏSR</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{% url 'poetry_list' %}">POEZİYA</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{% url 'writings_list' %}">YAZILAR</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'prose_list' %}">NƏSR</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'poetry_list' %}">POEZİYA</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'interview_list' %}">MÜSAHİBƏ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'writings_list' %}">YAZILAR</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="mobileAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">HAQQIMIZDA</a>
                             <ul class="dropdown-menu" aria-labelledby="mobileAboutDropdown">
                                 <li><a class="dropdown-item text-white" href="{% url 'about_us' %}">Biz Kimik</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'sub_guidelines' %}">Yazı Qəbulu</a></li>
@@ -62,7 +84,7 @@
                             </ul>
                         </li>
                         <li class="nav-item d-flex align-items-center justify-content-center">
-                            <a href="#" id="searchToggleMobile" class="nav-link text-white me-2">
+                            <a href="#" id="searchToggleMobile" class="nav-link me-2">
                                 <i class="bi bi-search"></i>
                             </a>
                             <input type="text" id="searchInputMobile" class="form-control" placeholder="Axtar..." style="display: none; width: 200px;" onkeydown="if(event.key === 'Enter') { search_all(); }"/>
@@ -71,7 +93,6 @@
                 </div>
             </div>
         </nav>
-       
     </header>
 
     <main class="container mt-5">

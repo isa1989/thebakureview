@@ -170,7 +170,11 @@ def search_all_view(request):
         for model in models:
             results.extend(model.objects.filter(search_conditions, is_active=True))
 
-    return render(request, "search_results.html", {"query": query, "results": results})
+    return render(
+        request,
+        "search_results.html",
+        {"query": query, "results": results, "results_count": len(results)},
+    )
 
 
 class AboutUsView(DetailView):

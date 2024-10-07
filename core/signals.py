@@ -33,11 +33,11 @@ def add_writings_to_home(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Poetry)
 def add_poetry_to_home(sender, instance, created, **kwargs):
-    if not created:
+    if created:
         update_home_with_new_content(instance, f"poetry/{instance.id}/")
 
 
 @receiver(post_save, sender=Prose)
 def add_prose_to_home(sender, instance, created, **kwargs):
-    if created:
+    if not created:
         update_home_with_new_content(instance, f"prose/{instance.id}/")

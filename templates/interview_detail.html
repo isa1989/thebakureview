@@ -27,7 +27,7 @@
                     <li class="mb-3">
                         <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
                         <a href="{% url 'interview_detail' related.id %}" class="archive-link">{{ related.title }}</a>
-                        <p class="author">Müəllif: {{ related.author }}</p>
+                        <p class="author">{{ related.author }}</p>
                     </li>
                     {% endfor %}
                 </ul>

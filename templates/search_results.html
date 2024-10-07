@@ -13,7 +13,7 @@
     }
     
     .black-link:hover {
-        text-decoration: underline; /* Hover durumunda alt çizgi ekler */
+        color: rgb(191, 61, 35); /* Hover durumunda renk değişir */
     }
 
     /* Liste stilleri */
@@ -26,18 +26,13 @@
         padding: 10px 0; /* Yukarı ve aşağıdan boşluk verir */
     }
 
-    li:not(:last-child) {
-        border-bottom: 1px solid #ccc; /* Her öğe arasında çizgi çizer, son öğeden önce */
-    }
-
     h2 {
         font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Başlık font ailesi */
         font-size: 2rem; /* Başlık boyutu */
-        text-transform: uppercase; /* Tüm harfleri büyük yapar */
     }
 </style>
 
-<h2>Axtarış Nəticələri üçün "{{ query }}"</h2>
+<h2>"{{ query }}" üçün axtarış nəticələri ({{ results_count }})</h2> <!-- Sonuç sayısını burada gösteriyoruz -->
 
 {% if results %}
     <ul>

@@ -9,11 +9,11 @@
             <div class="row">
                {% for writting in writings_list %}
                <div class="col-md-3 mb-4">
-                  <a href="{% url 'writings_detail' writting.id %}" class="card news-card" style="height: 100%; text-decoration: none; color: inherit;">
+                  <a href="{% url 'writings_detail' writting.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit;border: none;">
                      <img src="{{ writting.image.url }}" class="card-img-top" alt="Haber Fotoğrafı">
                      <div class="card-body">
                         <h5 class="card-title">{{ writting.title }}</h5>
-                        <p class="card-text"><small class="text-muted">Müəllif: {{ writting.author }}</small></p>
+                        <p class="card-text"><small class="text-muted">{{ writting.author }}</small></p>
                         <p class="card-text">{{ writting.content|truncatewords:5 }}</p> <!-- 20 kelimeye kadar kısalt -->
                      </div>
                   </a>

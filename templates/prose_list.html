@@ -7,7 +7,6 @@
          <!-- Sol Taraf: 12 birim, 4 sütunlu düzen -->
          <div class="col-md-12">
             <div class="row">
-               <!-- Dinamik olarak nəsr kartları -->
                {% for prose in prose_list %}
                <div class="col-md-3 mb-4">
                   <a href="{% url 'prose_detail' prose.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit;border: none;">

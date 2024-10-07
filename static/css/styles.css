@@ -6,10 +6,20 @@
 }
 
 .logo {
-    height: 50px;
-    margin-right: 20px;
+    width: auto; /* Logonun genişliğini otomatik ayarla */
+    height: 100%; /* Logonun yüksekliğini başlığın yüksekliğiyle eşitle */
+    max-height: 4.5rem; /* Maksimum yükseklik, başlık ile aynı olmasını sağlar */
+    margin-right: 10px;
+    
+    
 }
-
+.prose-card .card-title {
+    color: inherit; /* Varsayılan rengin korunması için */
+    transition: color 0.3s; /* Geçiş efekti ekleme */
+}
+.prose-card:hover .card-title {
+    color: rgb(191, 61, 35); /* Üzerine gelindiğinde renk değişimi */
+}
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -74,9 +84,9 @@ nav ul li a {
 }
 
 main {
-    flex: 1;
+    flex: 1; /* Ana içerik esnek alanı dolduracak */
+    margin-bottom: 50px; /* Footer ile arasındaki boşluk */
 }
-
 .bg-dark {
     background-color: #000 !important;
 }
@@ -176,19 +186,19 @@ footer {
 
 .author {
     margin-right: auto;
-    color: red;
+    color:rgb(191, 61, 35);
     /* Yazar adını sola itmek için */
 }
 
 /* Çizgi ile tarih arasında boşluk bırakma */
 .date {
     margin-left: 20px;
-    color: red;
+    color:rgb(191, 61, 35);
     /* İsteğe bağlı olarak boşluk ekleyin */
 }
 
 /* Responsive tasarım */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .header-section {
         flex-direction: column;
         height: auto;
@@ -236,8 +246,13 @@ footer {
     }
 
     .site-title {
-        font-size: 2rem;
-        /* Daha küçük başlık boyutu */
+        font-size: 5vw; /* Daha küçük font boyutu */
+    }
+    
+    .logo {
+        width: auto;
+        height: 4.5vw; /* Mobilde daha küçük logo */
+        margin-right: 5px;
     }
 
     .divider {
@@ -287,7 +302,7 @@ footer {
         border-bottom: none;
         /* Alt çizgiyi kaldır */
     }
-
+  
 
 
     .navbar-nav .dropdown-menu {
@@ -303,6 +318,7 @@ footer {
         color: #fff;
         /* Yazı rengi beyaz */
     }
+    
 
     .navbar-nav .dropdown-item:hover {
         background-color: #333;
