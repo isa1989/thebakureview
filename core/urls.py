@@ -20,7 +20,7 @@ urlpatterns = [
     ),
     path("about-us/", views.AboutUsView.as_view(), name="about_us"),
     path(
-        "submission-guidelines/",
+        "submission/",
         views.SubmissionGuidelinesView.as_view(),
         name="sub_guidelines",
     ),
