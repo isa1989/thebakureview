@@ -511,6 +511,19 @@ footer {
     font-size: 2.5em;
 }
 
+.dropdown-item:focus {
+    box-shadow: none;
+    /* Fokus durumunda gölgeyi kaldır */
+    outline: none;
+    /* Kenarlık çizgisini kaldır */
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    /* Üzerine gelindiğinde arka plan rengini kaldır */
+}
+
+
 .divider {
     /* Yeni stil */
     width: 75%;
