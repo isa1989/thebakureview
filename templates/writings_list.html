@@ -1,40 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-   <main class="container mt-4">
-      <div class="row">
-         <!-- Sol Taraf: 12 birim, 4 sütunlu düzen -->
-         <div class="col-md-12">
-            <div class="row">
-               {% for writting in writings_list %}
-               <div class="col-md-3 mb-4">
-                  <a href="{% url 'writings_detail' writting.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit;border: none;">
-                     <img src="{{ writting.image.url }}" class="card-img-top" alt="Haber Fotoğrafı">
-                     <div class="card-body">
-                        <h5 class="card-title">{{ writting.title }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ writting.author }}</small></p>
-                        <p class="card-text">{{ writting.content|truncatewords:5 }}</p> <!-- 20 kelimeye kadar kısalt -->
-                     </div>
-                  </a>
-               </div>
-                   {% endfor %}
-                   <nav aria-label="Page navigation">
-                     <ul class="pagination justify-content-center">
-                         <li class="page-item">
-                             <a class="page-link" href="#" aria-label="Previous">
-                                 <span aria-hidden="true">&laquo; Geri</span>
-                             </a>
-                         </li>
-                         <li class="page-item">
-                             <a class="page-link" href="#" aria-label="Next">
-                                 <span aria-hidden="true">İrəli &raquo;</span>
-                             </a>
-                         </li>
-                     </ul>
-                 </nav>
-            </div>
-         </div>
-      </div>
-   </main>
-   {% endblock %}
+<main class="container mt-4">
+    <div class="row">
+        <!-- Dinamik olarak yazı kartları -->
+        {% for writting in writings_list %}
+        <div class="col-md-4 mb-4"> <!-- Her sütun 4 birim genişliğinde, toplamda 12 birim -->
+            <a href="{% url 'writings_detail' writting.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
+                <img src="{{ writting.image.url }}" class="card-img-top" alt="{{ writting.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ writting.title }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ writting.author }}</small></p>
+                    {% comment %} <p class="card-text">{{ writting.content|truncatewords:5 }}</p> <!-- 5 kelimeye kadar kısalt --> {% endcomment %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Sayfalama -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo; Geri</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">İrəli &raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</main>
+{% endblock %}
