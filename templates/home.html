@@ -8,9 +8,9 @@
         <div class="col-md-5">
             <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
                 {% if top_5_articles %}
-                    <img id="articleImage" class="img-fluid" src="{{ top_5_articles.0.image.url }}" alt="{{ top_5_articles.0.title }}">
+                    <img id="articleImage" class="img-fluid" data-src="{{ top_5_articles.0.image.url }}" alt="{{ top_5_articles.0.title }}">
                 {% else %}
-                    <img id="articleImage" class="img-fluid" src="{% static 'images/default.png' %}" alt="Default Image">
+                    <img id="articleImage" class="img-fluid" data-src="{% static 'images/default.png' %}" alt="Default Image">
                 {% endif %}
             </div>
         </div>
@@ -26,14 +26,13 @@
             </ul>
         </div>
         
-
         <!-- Mobil için görünür olan kısım -->
         <div class="col-md-7 article-list d-block d-md-none">
             {% for article in top_5_articles %}
                 <a href="{{ article.source_model }}" class="text-decoration-none">
                     <div class="card mb-3" style="background-color: #000; color: white;">
                         <div class="card-body">
-                            <img src="{{ article.image.url }}" class="card-img-top" alt="Makale Fotoğrafı">
+                            <img data-src="{{ article.image.url }}" class="card-img-top lazyload" alt="Makale Fotoğrafı">
                             <p class="author-name">{{ article.author }}</p>
                             <p class="article-title">{{ article.title }}</p>
                         </div>
@@ -51,7 +50,7 @@
             <div class="article-card">
                 <a href="{{ article.source_model }}" class="text-decoration-none">
                     <div class="article-image-wrapper">
-                        <img src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid">
+                        <img data-src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid lazyload">
                     </div>
                     <h3 class="article-title">{{ article.title }}</h3>   
                     <h5 class="author-name" style="color: black;">{{ article.author }}</h5>
@@ -61,9 +60,17 @@
     </section>
 </main>
 
-
-
 <script>
+    // Sayfa yüklendikten sonra resimleri yükle
+    window.addEventListener('load', function() {
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        
+        lazyImages.forEach(img => {
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src'); // data-src'ı kaldır
+        });
+    });
+
     const articles = document.querySelectorAll('.list-group-item');
     const articleImage = document.getElementById('articleImage');
 
