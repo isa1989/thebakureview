@@ -6,15 +6,9 @@
 }
 
 .logo {
-    width: auto;
-    /* Logonun genişliğini otomatik ayarla */
-    height: 100%;
-    /* Logonun yüksekliğini başlığın yüksekliğiyle eşitle */
-    max-height: 4.5rem;
-    /* Maksimum yükseklik, başlık ile aynı olmasını sağlar */
-    margin-right: 10px;
-
-
+    max-height: 3.7vw;
+    /* Logonun ekran boyutuna göre dinamik yüksekliği */
+    margin-right: 20px;
 }
 
 .prose-card .card-title {
@@ -52,6 +46,7 @@ header h1 {
     text-align: center;
     color: #000;
     font-weight: 580;
+    white-space: nowrap;
 
 }
 
@@ -175,7 +170,12 @@ footer {
     transition: none;
 }
 
-
+.site-title {
+    font-size: 5vw;
+    /* Ekran genişliğine göre dinamik font boyutu */
+    white-space: nowrap;
+    /* Yazının tek satırda kalmasını sağla */
+}
 
 .article-card img {
     width: 100%;
@@ -223,12 +223,14 @@ footer {
 }
 
 
+
 /* Responsive tasarım */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .header-section {
         flex-direction: column;
         height: auto;
     }
+
 
     .image-preview,
     .article-list {
@@ -242,14 +244,15 @@ footer {
         height: auto;
         padding: 0;
     }
+
     .container {
         width: 100%;
         max-width: 100%;
         padding-left: 0rem;
         padding-right: 0rem;
-        
+
     }
-    
+
 
     .container.mt-0 {
         padding-left: 0;
@@ -261,8 +264,6 @@ footer {
 
 
     }
-    
-
 
     .articles-grid {
         display: flex;
@@ -325,13 +326,14 @@ footer {
         line-height: 1.5;
         /* Satır yüksekliği */
     }
+
     .article-title {
         margin: 0;
         color: #ffffff;
         transition: color 0.3s;
         font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
         text-align: left;
-    
+
     }
 
     .date {
@@ -407,11 +409,15 @@ footer {
     height: auto;
     transition: none;
 }
+
 .list-group-item .author-name {
-    font-size: 0.875em; /* Yazar adı boyutu */
+    font-size: 0.875em;
+    /* Yazar adı boyutu */
 }
+
 .list-group-item strong {
-    font-size: 1.5em; /* Başlık boyutu */
+    font-size: 1.5em;
+    /* Başlık boyutu */
 }
 
 /* Resim sabit boyutlandırma */
