@@ -221,6 +221,13 @@ footer {
     color: rgb(191, 61, 35);
     /* İsteğe bağlı olarak boşluk ekleyin */
 }
+.container {
+    width: 100%;
+    max-width: none;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
 
 /* Responsive tasarım */
 @media (max-width: 768px) {
