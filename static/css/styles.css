@@ -244,9 +244,10 @@ footer {
     }
     .container {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
         padding-left: 0rem;
         padding-right: 0rem;
+        
     }
     
 
