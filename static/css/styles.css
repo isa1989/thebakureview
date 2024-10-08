@@ -83,6 +83,10 @@ nav ul li a {
     margin-top: 0;
 }
 
+/* .mt-0 {
+    aspect-ratio: 3 / 2;
+} */
+
 .mt-5 {
     margin-top: 0 !important;
 }
@@ -136,7 +140,7 @@ footer {
 }
 
 .row {
-    height: 100%;
+    height: auto;
     display: flex;
     align-items: stretch;
 
@@ -190,7 +194,7 @@ footer {
     /* Yükseklik otomatik ayarlandı */
     overflow: hidden;
     /* Taşan kısımları gizle */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 2;
     /* Yatay görüntü oranı (örneğin 16:9) */
 }
 
@@ -496,8 +500,9 @@ footer {
     width: 100%;
     height: auto;
     object-fit: cover;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 2;
 }
+
 
 
 
