@@ -389,6 +389,12 @@ footer {
     height: auto;
     transition: none;
 }
+.list-group-item .author-name {
+    font-size: 0.875em; /* Yazar adı boyutu */
+}
+.list-group-item strong {
+    font-size: 1.5em; /* Başlık boyutu */
+}
 
 /* Resim sabit boyutlandırma */
 #articleImage {
