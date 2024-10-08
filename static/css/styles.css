@@ -531,7 +531,7 @@ footer {
 
 .divider {
     /* Yeni stil */
-    width: 75%;
+    width: 85%;
     margin-bottom: 5px;
     border-top: 1px solid #000;
 }
@@ -558,7 +558,7 @@ footer {
 
 .news-image {
     /* Yeni stil */
-    width: 75%;
+    width: 85%;
     height: auto;
 }
 
@@ -571,8 +571,8 @@ footer {
 
 .archive-container {
     /* Yeni stil */
-    margin-top: 2.5em;
-    padding-right: 70px;
+    margin-top: 4.5em;
+    padding-right: 7px;
 }
 
 .archive-title {
@@ -583,7 +583,7 @@ footer {
 .archive-image {
     /* Yeni stil */
     width: 100%;
-    height: auto;
+    height: 35vh;
 }
 
 .archive-link {
