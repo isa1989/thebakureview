@@ -3,9 +3,9 @@
 {% block title %}THE BAKU REVIEW{% endblock %}
 
 {% block content %}
-<div class="container mt-0">
+<div class="container mt-0 top-articles-height">
     <div class="row align-items-stretch">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
                 {% if top_5_articles %}
                     <img id="articleImage" class="img-fluid" data-src="{{ top_5_articles.0.image.url }}" alt="{{ top_5_articles.0.title }}">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <!-- Web için görünür olan kısım -->
-        <div class="col-md-7 article-list d-none d-md-block">
+        <div class="col-md-4 article-list d-none d-md-block">
             <ul class="list-group list-group-flush">
                 {% for article in top_5_articles %}
                     <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;" onclick="location.href='{{ article.source_model }}'">
