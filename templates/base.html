@@ -47,7 +47,7 @@
             </a>
         </h1>
 
-        <nav class="d-none d-md-block">
+        <nav class="d-none d-md-block d-lg-block">
             <ul class="nav justify-content-center">
                 <li class="nav-item"><a class="nav-link" href="{% url 'news_list' %}">YENİLİKLƏR</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'prose_list' %}">NƏSR</a></li>
@@ -72,7 +72,8 @@
             </ul>
         </nav>
 
-        <nav class="navbar navbar-dark bg-dark d-lg-none">
+        <nav class="navbar navbar-dark bg-dark d-md-none"> <!-- Mobil menü -->
+
             <div class="container-fluid">
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span> <!-- Beyaz ikon -->
