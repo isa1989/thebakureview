@@ -177,11 +177,21 @@ footer {
     /* Yazının tek satırda kalmasını sağla */
 }
 
-.article-card img {
+/* .article-card img {
     width: 100vh;
     height: 33.3vh;
-    max-height: 350px;
     object-fit: cover;
+} */
+
+.article-image-wrapper {
+    width: 100%;
+    /* Tam genişlik */
+    height: auto;
+    /* Yükseklik otomatik ayarlandı */
+    overflow: hidden;
+    /* Taşan kısımları gizle */
+    aspect-ratio: 16 / 9;
+    /* Yatay görüntü oranı (örneğin 16:9) */
 }
 
 .article-card .author-name,
