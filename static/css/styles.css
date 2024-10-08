@@ -325,6 +325,14 @@ footer {
         line-height: 1.5;
         /* Satır yüksekliği */
     }
+    .article-title {
+        margin: 0;
+        color: #ffffff;
+        transition: color 0.3s;
+        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
+        text-align: left;
+    
+    }
 
     .date {
         font-size: 1em;
