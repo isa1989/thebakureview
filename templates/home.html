@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container mt-0 top-articles-height">
-    <div class="row align-items-stretch">
+    <div class="row align-items-stretch aspect-ratio-16-9">
         <div class="col-md-6">
             <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
                 {% if top_5_articles %}
@@ -26,7 +26,6 @@
             </ul>
         </div>
         
-        
         <!-- Mobil için görünür olan kısım -->
         <div class="col-md-7 article-list d-block d-md-none">
             {% for article in top_5_articles %}
@@ -41,8 +40,8 @@
                 </a>
             {% endfor %}
         </div>
-        
     </div>
+    
 </div>
 
 <main class="container mt-3">

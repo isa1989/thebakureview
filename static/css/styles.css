@@ -83,10 +83,6 @@ nav ul li a {
     margin-top: 0;
 }
 
-/* .mt-0 {
-    aspect-ratio: 3 / 2;
-} */
-
 .mt-5 {
     margin-top: 0 !important;
 }
@@ -140,7 +136,7 @@ footer {
 }
 
 .row {
-    height: auto;
+    height: 100%;
     display: flex;
     align-items: stretch;
 
@@ -493,6 +489,12 @@ footer {
     color: #666;
 }
 
+.article-card img {
+    width: 100vh;
+    height: 33.3vh;
+    object-fit: cover;
+}
+
 .card-img,
 .card-img-top {
     border-top-left-radius: 0 !important;
@@ -502,7 +504,6 @@ footer {
     object-fit: cover;
     aspect-ratio: 3 / 2;
 }
-
 
 
 
