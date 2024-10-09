@@ -75,7 +75,7 @@ nav ul li a {
 }
 
 .nav-link {
-    color: #000 !important;
+    color: rgb(65, 65, 65) !important;
     /* Web sürüm rengi */
 }
 
@@ -95,11 +95,11 @@ main {
 }
 
 .bg-dark {
-    background-color: #000 !important;
+    background-color: rgb(65, 65, 65) !important;
 }
 
 .dropdown-menu {
-    background-color: #000;
+    background-color: rgb(65, 65, 65);
     /* Düşük arka plan rengi */
     border: none;
     /* Kenarları kaldırmak için isteğe bağlı */
@@ -207,7 +207,7 @@ footer {
 
 .article-title {
     margin: 0;
-    color: #000;
+    color: rgb(65, 65, 65);
     transition: color 0.3s;
     font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
     text-align: left;
@@ -228,7 +228,7 @@ footer {
 /* Çizgi ile tarih arasında boşluk bırakma */
 .date {
     margin-left: 20px;
-    color: #000;
+    color: rgb(65, 65, 65);
     /* İsteğe bağlı olarak boşluk ekleyin */
 }
 
@@ -269,7 +269,7 @@ footer {
         /* Sol boşluğu kaldır */
         padding-right: 0;
         /* Sağ boşluğu kaldır */
-        background-color: #000;
+        background-color: rgb(65, 65, 65);
         /* Arka plan rengi siyah */
 
 
@@ -307,7 +307,7 @@ footer {
         /* Yeni stil */
         width: 100% !important;
         margin-bottom: 5px;
-        border-top: 1px solid #000;
+        border-top: 1px solid rgb(65, 65, 65);
     }
 
     .detail-container {
@@ -365,7 +365,7 @@ footer {
     .navbar-nav .dropdown-menu {
         position: static;
         float: none;
-        background-color: #000;
+        background-color: rgb(65, 65, 65);
         /* Arka plan siyah */
         text-align: center;
         /* İçerikleri ortala */
@@ -400,7 +400,7 @@ footer {
 
 /* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
 .article-list {
-    background-color: #000;
+    background-color: rgb(65, 65, 65);
     color: white;
     flex-grow: 1;
     display: flex;
@@ -509,7 +509,8 @@ footer {
 
 
 .pagination .page-item .page-link {
-    color: black;
+    color: rgb(65, 65, 65);
+    ;
     /* Bağlantı metni rengi */
     border-radius: 0;
     /* Kenarları düz yap */
@@ -523,7 +524,8 @@ footer {
 }
 
 .pagination .page-item.active .page-link {
-    background-color: black;
+    background-color: rgb(65, 65, 65);
+    ;
     /* Seçili sayfanın arka plan rengi */
     color: white;
     /* Seçili sayfanın yazı rengi */
@@ -587,7 +589,7 @@ footer {
     /* Yeni stil */
     width: 85%;
     margin-bottom: 5px;
-    border-top: 1px solid #000;
+    border-top: 1px solid rgb(65, 65, 65);
 }
 
 .news-meta {
@@ -646,7 +648,8 @@ footer {
 
 .archive-link {
     /* Yeni stil */
-    color: black;
+    color: rgb(65, 65, 65);
+    ;
     text-decoration: none;
 }
 
