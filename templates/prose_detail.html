@@ -24,9 +24,11 @@
                 <ul class="list-unstyled">
                     {% for related in related_prose %}
                     <li class="mb-3">
-                        <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
-                        <a href="{% url 'prose_detail' related.id %}" class="archive-link">{{ related.title }}</a>
-                        <p class="author">{{ related.author }}</p>
+                        <a href="{% url 'prose_detail' related.id %}" class="archive-link">
+                            <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
+                            <p class="archive-link" style="margin-bottom:0">{{ related.title }}</p>
+                            <p class="author">{{ related.author }}</p>
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>

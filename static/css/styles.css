@@ -228,7 +228,7 @@ footer {
 /* Çizgi ile tarih arasında boşluk bırakma */
 .date {
     margin-left: 20px;
-    color: rgb(191, 61, 35);
+    color: #000;
     /* İsteğe bağlı olarak boşluk ekleyin */
 }
 
@@ -606,8 +606,8 @@ footer {
 
 .image-container {
     /* Yeni stil */
-    flex-grow: 1;
-    margin-top: 20px;
+    /* flex-grow: 1; */
+    margin-top: 0px;
 }
 
 .news-image {
@@ -620,7 +620,7 @@ footer {
     /* Yeni stil */
     font-size: 1.2em;
     margin-top: 20px;
-    width: 75%;
+    width: 85%;
 }
 
 .archive-container {
@@ -635,9 +635,13 @@ footer {
 }
 
 .archive-image {
-    /* Yeni stil */
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    /* Görsel konteynere tam oturur, ancak kesme olabilir */
     width: 100%;
-    height: 35vh;
+    /* Konteyneri tam kaplar */
+    height: auto;
+    /* Yükseklik oranını korur */
 }
 
 .archive-link {
@@ -648,5 +652,5 @@ footer {
 
 .archive-link:hover {
     /* Yeni stil */
-    text-decoration: underline;
+    text-decoration: none;
 }
