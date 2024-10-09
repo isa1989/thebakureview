@@ -365,7 +365,7 @@ footer {
     .navbar-nav .dropdown-menu {
         position: static;
         float: none;
-        background-color: rgb(65, 65, 65);
+        background-color: #000;
         /* Arka plan siyah */
         text-align: center;
         /* İçerikleri ortala */
@@ -658,4 +658,40 @@ footer {
 .archive-link:hover {
     /* Yeni stil */
     text-decoration: none;
+}
+
+.about-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* İçeriği ortalar */
+    padding: 20px;
+    /* Üst ve alt boşluk */
+}
+
+.about-us-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* İçeriği ortalar */
+    width: 52%;
+    /* İçeriğin genişliği %50 */
+    margin: 0 auto;
+    /* Merkeze hizalar */
+}
+
+.submission-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* İçeriği ortalar */
+    padding: 20px;
+    width: 52%;
+    margin: 0 auto;
+    /* Üst ve alt boşluk */
+}
+
+.content-body {
+    padding: 20px;
+    /* İçerik etrafında boşluk */
 }

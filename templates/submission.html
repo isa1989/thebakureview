@@ -3,9 +3,9 @@
 {% block title %}Yazı Qəbulu{% endblock %}
 
 {% block content %}
-<div class="submission-content">
+<div class="submission-content d-flex flex-column align-items-center">
     <h1 class="text-center">{{ submission.title }}</h1>
-    <div class="content-body" style="max-width: 1200px; margin: 0 auto;"> <!-- Menü genişliğine göre ayarlama -->
+    <div class="content-body">
         {{ submission.content|safe }}
     </div>
 </div>
