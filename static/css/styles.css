@@ -400,7 +400,7 @@ footer {
 
 /* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
 .article-list {
-    background-color: rgb(65, 65, 65);
+    background-color: #000;
     color: white;
     flex-grow: 1;
     display: flex;
@@ -570,6 +570,7 @@ footer {
 .news-title {
     width: 75%;
     font-size: 2.5em;
+    color: rgb(65, 65, 65);
 }
 
 .dropdown-item:focus {
@@ -587,7 +588,7 @@ footer {
 
 .divider {
     /* Yeni stil */
-    width: 85%;
+    width: 80%;
     margin-bottom: 5px;
     border-top: 1px solid rgb(65, 65, 65);
 }
@@ -614,7 +615,7 @@ footer {
 
 .news-image {
     /* Yeni stil */
-    width: 85%;
+    width: 80%;
     height: auto;
 }
 
@@ -622,7 +623,7 @@ footer {
     /* Yeni stil */
     font-size: 1.2em;
     margin-top: 20px;
-    width: 85%;
+    width: 80% !important;
 }
 
 .archive-container {
@@ -634,6 +635,7 @@ footer {
 .archive-title {
     /* Yeni stil */
     margin-bottom: 1em;
+    color: rgb(65, 65, 65);
 }
 
 .archive-image {
