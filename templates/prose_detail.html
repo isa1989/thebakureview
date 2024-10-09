@@ -20,11 +20,11 @@
                 <p class="news-content">{{ prose.content }}</p>
             </div>
             <div class="col-md-3 d-flex flex-column archive-container">
-                <h4 class="archive-title" style="margin-bottom: 0;">Arxivimizdən</h4>
+                <h4 class="archive-title" style="margin-bottom: 10px;">Arxivimizdən</h4>
                 <ul class="list-unstyled">
                     {% for related in related_prose %}
-                    <li class="mb-3">
-                        <a href="{% url 'prose_detail' related.id %}" class="archive-link">
+                    <li class="mb-3 d-flex">
+                        <a href="{% url 'prose_detail' related.id %}" class="archive-link" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start;">
                             <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
                             <p class="archive-link" style="margin-bottom:0">{{ related.title }}</p>
                             <p class="author">{{ related.author }}</p>

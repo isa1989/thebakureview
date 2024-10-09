@@ -95,7 +95,7 @@ main {
 }
 
 .bg-dark {
-    background-color: rgb(65, 65, 65) !important;
+    background-color: #000 !important;
 }
 
 .dropdown-menu {
