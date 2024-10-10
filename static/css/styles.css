@@ -128,12 +128,41 @@ footer {
 }
 
 .image-preview {
-    height: 100%;
+    width: 100%;
+    height: auto;
+    /* Yükseklik otomatik ayarlanır */
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f8f9fa;
+    aspect-ratio: 3 / 2;
+    /* Oran korunur */
+    overflow: hidden;
+    /* Taşmaları önlemek için */
 }
+
+
+/* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
+.article-list-web {
+    background-color: #000;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 3 / 1;
+    /* Sağ tarafın oranını artırıyoruz */
+    overflow: hidden;
+    /* İçeriğin taşmasını engeller */
+    padding: 10px;
+    /* İçerik sıkışmaması için padding eklenir */
+}
+
+.article-list-web h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
 
 .row {
     height: 100%;
@@ -147,12 +176,6 @@ footer {
     padding-right: 0;
 }
 
-.image-preview img {
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 
 /* Makale grid düzeni */
 .articles-grid {
@@ -336,6 +359,7 @@ footer {
         line-height: 1.5;
         /* Satır yüksekliği */
     }
+
     .about-us-content {
         display: flex;
         flex-direction: column;
@@ -346,13 +370,14 @@ footer {
         margin: 0 auto;
         /* Merkeze hizalar */
     }
+
     .submission-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         /* İçeriği ortalar */
         padding: 20px;
-        width: 90% !important;  
+        width: 90% !important;
         margin: 0 auto;
         /* Üst ve alt boşluk */
     }
@@ -418,21 +443,6 @@ footer {
     /* İkonu sağa itme */
 }
 
-/* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
-.article-list {
-    background-color: #000;
-    color: white;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-.article-list h2 {
-    color: #fff;
-    margin-bottom: 20px;
-}
 
 /* Her makale başlığının altına beyaz çizgi */
 .list-group-item {
