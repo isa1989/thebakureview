@@ -18,7 +18,7 @@
         <div class="col-md-4 article-list-web d-none d-md-block">
             <ul class="list-group list-group-flush">
                 {% for article in top_5_articles %}
-                    <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;" onclick="location.href='{{ article.source_model }}'">
+                    <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;margin-left: 10px;" onclick="location.href='{{ article.source_model }}'">
                         <strong>{{ article.title }}</strong>
                         <p class="author-name">{{ article.author }}</p>
                     </li>
