@@ -6,7 +6,7 @@
         <!-- Sol Taraf: 12 birim, 3 sütunlu düzen -->
         {% for poetry in poetry_list %}
         <div class="col-md-4 mb-4"> <!-- Her sütun 4 birim genişliğinde, toplamda 12 birim -->
-            <a href="{% url 'poetry_detail' poetry.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
+            <a href="{% url 'poetry_detail' poetry.slug %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
                 <img src="{{ poetry.image.url }}" class="card-img-top" alt="{{ poetry.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ poetry.title }}</h5>

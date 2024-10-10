@@ -21,7 +21,7 @@
                     {% for related in related_news %}
                     <li class="mb-3">
                         <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
-                        <a href="{% url 'news_detail' related.id %}" class="archive-link">{{ related.title }}</a>
+                        <a href="{% url 'news_detail' related.slug %}" class="archive-link">{{ related.title }}</a>
                         <p class="author">{{ related.author }}</p>
                     </li>
                     {% endfor %}

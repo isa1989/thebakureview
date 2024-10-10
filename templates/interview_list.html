@@ -6,7 +6,7 @@
         <!-- Dinamik olarak müsahibə kartları -->
         {% for interview in interview_list %}
         <div class="col-md-4 mb-4"> <!-- Her sütun 4 birim genişliğinde, toplamda 12 birim -->
-            <a href="{% url 'interview_detail' interview.id %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
+            <a href="{% url 'interview_detail' interview.slug %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
                 <img src="{{ interview.image.url }}" class="card-img-top" alt="{{ interview.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ interview.title }}</h5>

@@ -336,6 +336,26 @@ footer {
         line-height: 1.5;
         /* Satır yüksekliği */
     }
+    .about-us-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* İçeriği ortalar */
+        width: 90% !important;
+        /* İçeriğin genişliği %50 */
+        margin: 0 auto;
+        /* Merkeze hizalar */
+    }
+    .submission-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* İçeriği ortalar */
+        padding: 20px;
+        width: 90% !important;  
+        margin: 0 auto;
+        /* Üst ve alt boşluk */
+    }
 
     .article-title {
         margin: 0;

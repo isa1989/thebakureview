@@ -30,7 +30,7 @@ def home(request):
     home_articles = (
         Home.objects.filter(is_active=True)
         .only("title", "author", "image", "created_at")
-        .order_by("-created_at")[:21]
+        .order_by("-created_at")[:20]
     )
     top_5_articles = home_articles[:5]
     remaining_articles = home_articles[5:]

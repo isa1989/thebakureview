@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="detail-container mt-4">
+        <div class="row">
+            <div class="col-md-9 mx-auto d-flex flex-column">
+                <h2 class="news-title">{{ writtings.title }}</h2>
+                <div class="divider"></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 75%; margin: 0; padding-top: 5px;">
+                    <p class="author" style="font-size: 1.5em; margin: 0;">{{ writtings.author }}</p>
+                    <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ writtings.created_at|date:"d F Y" }}</span>
+                </div>
+                <div class="image-container">
+                    <img src="{{ writtings.image.url }}" alt="{{ writtings.title }}" class="img-fluid news-image">
+                </div>
+                <p class="news-content">{{ writtings.content }}</p>
+            </div>
+            <div class="col-md-3 d-flex flex-column archive-container">
+                <h4 class="archive-title">Arxivimizdən</h4>
+                <ul class="list-unstyled">
+                    {% for related in related_writtings %}
+                    <li class="mb-3">
+                        <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
+                        <a href="{% url 'writtings_detail' related.id %}" class="archive-link">{{ related.title }}</a>
+                        <p class="author">Müəllif: {{ related.author }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

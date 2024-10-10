@@ -24,7 +24,7 @@
                 <ul class="list-unstyled">
                     {% for related in related_writings %}
                     <li class="mb-3">
-                        <a href="{% url 'writings_detail' related.id %}" class="archive-link">
+                        <a href="{% url 'writings_detail' related.slug %}" class="archive-link">
                             <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
                             <p style="margin-bottom: 0;">{{ related.title }}</p>
                             <p class="author">{{ related.author }}</p>
