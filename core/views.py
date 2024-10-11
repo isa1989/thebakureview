@@ -5,7 +5,7 @@ from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import (
     AboutUs,
@@ -41,24 +41,38 @@ def home(request):
     return render(request, "home.html", context)
 
 
-def news_list(request):
-    news = News.objects.filter(is_active=True)
-    context = {"news": news}
-    return render(request, "news_list.html", context)
+class NewsListView(ListView):
+    model = News
+    template_name = "news_list.html"
+    context_object_name = "news"
+
+    def get_queryset(self):
+        return News.objects.filter(is_active=True)
 
 
-def news_detail(request, id):
-    news_item = get_object_or_404(News, id=id)
-    related_news = News.objects.filter(is_active=True).exclude(id=id)[:5]
-    return render(
-        request, "news_detail.html", {"news": news_item, "related_news": related_news}
-    )
+class NewsDetailView(DetailView):
+    model = News
+    template_name = "news_detail.html"
+    context_object_name = "news"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        news_id = self.object.id
+        context["related_news"] = (
+            News.objects.filter(is_active=True)
+            .exclude(id=news_id)
+            .order_by("-created_at")[:5]
+        )
+        return context
 
 
-def prose_list(request):
-    prose_list = Prose.objects.filter(is_active=True)
-    context = {"prose_list": prose_list}
-    return render(request, "prose_list.html", context)
+class ProseListView(ListView):
+    model = Prose
+    template_name = "prose_list.html"
+    context_object_name = "prose_list"
+
+    def get_queryset(self):
+        return Prose.objects.filter(is_active=True)
 
 
 class ProseDetailView(DetailView):
@@ -74,56 +88,79 @@ class ProseDetailView(DetailView):
         return context
 
 
-def poetry_list(request):
-    poetry_list = Poetry.objects.filter(is_active=True)
-    context = {"poetry_list": poetry_list}
-    return render(request, "poetry_list.html", context)
+class PoetryListView(ListView):
+    model = Poetry
+    template_name = "poetry_list.html"
+    context_object_name = "poetry_list"
+
+    def get_queryset(self):
+        return Poetry.objects.filter(is_active=True)
 
 
-def poetry_detail(request, poetry_id):
-    poetry_item = get_object_or_404(Poetry, id=poetry_id, is_active=True)
-    related_poetry = Poetry.objects.filter(is_active=True).exclude(id=poetry_id)[:5]
-    return render(
-        request,
-        "poetry_detail.html",
-        {"poetry": poetry_item, "related_poetry": related_poetry},
-    )
+class PoetryDetailView(DetailView):
+    model = Poetry
+    template_name = "poetry_detail.html"
+    context_object_name = "poetry"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        poetry_id = self.object.id
+        context["related_poetry"] = (
+            Poetry.objects.filter(is_active=True)
+            .exclude(id=poetry_id)
+            .order_by("-created_at")[:5]
+        )
+        return context
 
 
-def writings_list(request):
-    writings_list = Writings.objects.filter(is_active=True)
-    context = {"writings_list": writings_list}
-    return render(request, "writings_list.html", context)
+class WritingsListView(ListView):
+    model = Writings
+    template_name = "writings_list.html"
+    context_object_name = "writings_list"
+
+    def get_queryset(self):
+        return Writings.objects.filter(is_active=True)
 
 
-def writings_detail(request, writings_id):
-    writings_item = get_object_or_404(Writings, id=writings_id, is_active=True)
-    related_writings = Writings.objects.filter(is_active=True).exclude(id=writings_id)[
-        :5
-    ]
-    return render(
-        request,
-        "writings_detail.html",
-        {"writings": writings_item, "related_writings": related_writings},
-    )
+class WritingsDetailView(DetailView):
+    model = Writings
+    template_name = "writings_detail.html"
+    context_object_name = "writings"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        writings_id = self.object.id
+        context["related_writings"] = (
+            Writings.objects.filter(is_active=True)
+            .exclude(id=writings_id)
+            .order_by("-created_at")[:5]
+        )  # Sıralama eklenebilir
+        return context
 
 
-def interview_list(request):
-    interview_list = Interview.objects.filter(is_active=True)
-    context = {"interview_list": interview_list}
-    return render(request, "interview_list.html", context)
+class InterviewListView(ListView):
+    model = Interview
+    template_name = "interview_list.html"
+    context_object_name = "interview_list"
+
+    def get_queryset(self):
+        return Interview.objects.filter(is_active=True)
 
 
-def interview_detail(request, interview_id):
-    interview_item = get_object_or_404(Interview, id=interview_id, is_active=True)
-    related_interviews = Interview.objects.filter(is_active=True).exclude(
-        id=interview_id
-    )[:5]
-    return render(
-        request,
-        "interview_detail.html",
-        {"interviews": interview_item, "related_interviews": related_interviews},
-    )
+class InterviewDetailView(DetailView):
+    model = Interview
+    template_name = "interview_detail.html"
+    context_object_name = "interviews"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        interview_id = self.object.id
+        context["related_interviews"] = (
+            Interview.objects.filter(is_active=True)
+            .exclude(id=interview_id)
+            .order_by("-created_at")[:5]
+        )  # İlgili mülakatları getir
+        return context
 
 
 def author_detail(request, author):
@@ -164,7 +201,6 @@ def search_all_view(request):
             | Q(author__icontains=query)
         )
 
-        # Aktif olanlar için tüm modellerde arama yap
         models = [News, Prose, Poetry, Writings, Interview]
 
         for model in models:
