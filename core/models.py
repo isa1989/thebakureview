@@ -62,6 +62,18 @@ class BaseModel(models.Model):
             self.thumbnail = os.path.relpath(thumbnail_path, start="media")
             super().save(update_fields=["thumbnail"])
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            if default_storage.exists(self.image.name):
+                default_storage.delete(self.image.name)
+
+        if self.thumbnail:
+            thumbnail_path = self.thumbnail.path
+            if default_storage.exists(thumbnail_path):
+                default_storage.delete(thumbnail_path)
+
+        super().delete(*args, **kwargs)
+
     def create_slug(self):
         base_slug = slugify(self.title)
         slug = base_slug

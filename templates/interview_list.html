@@ -7,7 +7,7 @@
         {% for interview in interview_list %}
         <div class="col-md-4 mb-4"> <!-- Her sütun 4 birim genişliğinde, toplamda 12 birim -->
             <a href="{% url 'interview_detail' interview.slug %}" class="card prose-card" style="height: 100%; text-decoration: none; color: inherit; border: none;">
-                <img src="{{ interview.image.url }}" class="card-img-top" alt="{{ interview.title }}">
+                <img src="{{ interview.thumbnail.url }}" class="card-img-top" alt="{{ interview.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ interview.title }}</h5>
                     <p class="card-text"><small class="text-muted">{{ interview.author }}</small></p>
@@ -17,21 +17,6 @@
         </div>
         {% endfor %}
     </div>
-    
-    <!-- Sayfalama -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo; Geri</span>
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">İrəli &raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    {% include "pagination.html" %}
 </main>
 {% endblock %}

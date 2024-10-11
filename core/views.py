@@ -5,6 +5,9 @@ from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.template.loader import render_to_string
+from django.http import HttpResponseNotFound
+
 from django.views.generic import DetailView, ListView
 
 from .models import (
@@ -45,6 +48,7 @@ class NewsListView(ListView):
     model = News
     template_name = "news_list.html"
     context_object_name = "news"
+    paginate_by = 16
 
     def get_queryset(self):
         return News.objects.filter(is_active=True)
@@ -70,6 +74,7 @@ class ProseListView(ListView):
     model = Prose
     template_name = "prose_list.html"
     context_object_name = "prose_list"
+    paginate_by = 16
 
     def get_queryset(self):
         return Prose.objects.filter(is_active=True)
@@ -92,6 +97,7 @@ class PoetryListView(ListView):
     model = Poetry
     template_name = "poetry_list.html"
     context_object_name = "poetry_list"
+    paginate_by = 16
 
     def get_queryset(self):
         return Poetry.objects.filter(is_active=True)
@@ -117,6 +123,7 @@ class WritingsListView(ListView):
     model = Writings
     template_name = "writings_list.html"
     context_object_name = "writings_list"
+    paginate_by = 16
 
     def get_queryset(self):
         return Writings.objects.filter(is_active=True)
@@ -134,7 +141,7 @@ class WritingsDetailView(DetailView):
             Writings.objects.filter(is_active=True)
             .exclude(id=writings_id)
             .order_by("-created_at")[:5]
-        )  # Sıralama eklenebilir
+        )
         return context
 
 
@@ -142,6 +149,7 @@ class InterviewListView(ListView):
     model = Interview
     template_name = "interview_list.html"
     context_object_name = "interview_list"
+    paginate_by = 16
 
     def get_queryset(self):
         return Interview.objects.filter(is_active=True)
@@ -229,3 +237,9 @@ class SubmissionGuidelinesView(DetailView):
 
     def get_object(self):
         return SubmissionGuidelines.objects.first()
+
+
+def custom_404_view(request, exception=None):
+
+    content = render_to_string("404.html")
+    return HttpResponseNotFound(content)
