@@ -3,11 +3,9 @@ from itertools import chain
 
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
-from django.http import HttpResponseNotFound
-
 from django.views.generic import DetailView, ListView
 
 from .models import (
@@ -32,7 +30,7 @@ def custom_upload_file(request):
 def home(request):
     home_articles = (
         Home.objects.filter(is_active=True)
-        .only("title", "author", "image", "created_at")
+        .only("title", "author", "thumbnail", "created_at")
         .order_by("-created_at")[:20]
     )
     top_5_articles = home_articles[:5]

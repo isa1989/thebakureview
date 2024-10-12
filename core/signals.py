@@ -2,19 +2,32 @@ from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 
 from core.models import Home, Interview, Poetry, Prose, Writings
+from core.utils import create_thumbnail
 
 
 def update_home_with_new_content(instance, source_model_name):
-    Home.objects.create(
-        title=instance.title,
-        content=instance.content,
-        image=instance.image,
-        author=instance.author,
-        is_active=instance.is_active,
-        source_model=source_model_name,
+    home_instance, created = Home.objects.get_or_create(
+        slug=instance.slug,
+        defaults={
+            "title": instance.title,
+            "content": instance.content,
+            "thumbnail": instance.thumbnail,
+            "author": instance.author,
+            "is_active": instance.is_active,
+            "source_model": source_model_name,
+        },
     )
 
-    if Home.objects.count() > 21:
+    if not created:
+        home_instance.title = instance.title
+        home_instance.content = instance.content
+        home_instance.thumbnail = instance.thumbnail
+        home_instance.author = instance.author
+        home_instance.is_active = instance.is_active
+        home_instance.source_model = source_model_name
+        home_instance.save()
+
+    if Home.objects.count() > 20:
         oldest_home_content = Home.objects.order_by("created_at").first()
         oldest_home_content.delete()
 
@@ -43,7 +56,7 @@ def add_poetry_to_home(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Prose)
 def add_prose_to_home(sender, instance, created, **kwargs):
-    if created:
+    if instance and not created:
         update_home_with_new_content(instance, f"fiction/{instance.slug}/")
 
 

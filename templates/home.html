@@ -4,11 +4,11 @@
 
 {% block content %}
 <div class="container mt-0 top-articles-height">
-    <div class="row align-items-stretch aspect-ratio-16-9">
+    <div class="row home align-items-stretch aspect-ratio-16-9">
         <div class="col-md-6">
             <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
                 {% if top_5_articles %}
-                    <img id="articleImage" class="img-fluid" data-src="{{ top_5_articles.0.image.url }}" alt="{{ top_5_articles.0.title }}">
+                    <img id="articleImage" class="img-fluid" data-src="{{ top_5_articles.0.thumbnail.url }}" alt="{{ top_5_articles.0.title }}">
                 {% else %}
                     <img id="articleImage" class="img-fluid" data-src="{% static 'images/default.png' %}" alt="Default Image">
                 {% endif %}
@@ -18,7 +18,7 @@
         <div class="col-md-4 article-list-web d-none d-md-block">
             <ul class="list-group list-group-flush">
                 {% for article in top_5_articles %}
-                    <li class="list-group-item" data-image="{{ article.image.url }}" style="cursor: pointer;margin-left: 10px;" onclick="location.href='{{ article.source_model }}'">
+                    <li class="list-group-item" data-image="{{ article.thumbnail.url }}" style="cursor: pointer;margin-left: 10px;" onclick="location.href='{{ article.source_model }}'">
                         <strong>{{ article.title }}</strong>
                         <p class="author-name">{{ article.author }}</p>
                     </li>
@@ -32,7 +32,7 @@
                 <a href="{{ article.source_model }}" class="text-decoration-none">
                     <div class="card mb-3" style="background-color: #000; color: white;">
                         <div class="card-body">
-                            <img data-src="{{ article.image.url }}" class="card-img-top lazyload" alt="Makale Fotoğrafı">
+                            <img data-src="{{ article.thumbnail.url }}" class="card-img-top lazyload" alt="Makale Fotoğrafı">
                             <p class="author-name">{{ article.author }}</p>
                             <p class="article-title">{{ article.title }}</p>
                         </div>
@@ -50,7 +50,7 @@
             <div class="article-card">
                 <a href="{{ article.source_model }}" class="text-decoration-none">
                     <div class="article-image-wrapper">
-                        <img data-src="{{ article.image.url }}" alt="Makale Fotoğrafı" class="img-fluid lazyload">
+                        <img data-src="{{ article.thumbnail.url }}" alt="Makale Fotoğrafı" class="img-fluid lazyload">
                     </div>
                     <h3 class="article-title">{{ article.title }}</h3>   
                     <h5 class="author-name" style="color: black;">{{ article.author }}</h5>
@@ -85,6 +85,7 @@
             article.querySelector('strong').classList.remove('highlight');
         });
     });
+    
 </script>
 
 {% endblock %}

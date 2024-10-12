@@ -1,10 +1,11 @@
 import os
+
+from django.core.files.storage import default_storage
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django_ckeditor_5.fields import CKEditor5Field
 from PIL import Image
-from django.core.files.storage import default_storage
 
 
 def create_thumbnail(image_path, thumbnail_path, size=(600, 600)):
@@ -151,10 +152,7 @@ class Interview(BaseModel):
 class Home(models.Model):
     title = models.CharField(max_length=200)
     content = CKEditor5Field("Text", config_name="extends")
-    image = models.ImageField(upload_to=get_image_upload_path)
-    thumbnail = models.ImageField(
-        upload_to=get_image_upload_thumbnail, null=True, blank=True
-    )
+    thumbnail = models.ImageField(upload_to=get_image_upload_thumbnail)
     author = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path, re_path
 
-from core.views import custom_upload_file, custom_404_view
+from core.views import custom_404_view, custom_upload_file
 
 handler404 = custom_404_view
 
@@ -30,7 +30,6 @@ urlpatterns = [
     path("upload/", custom_upload_file, name="custom_upload_file"),
     path("admin/", admin.site.urls),
     path("", include("core.urls")),
-    re_path(r"^.*$", custom_404_view),
 ]
 urlpatterns += [
     path("ckeditor5/", include("django_ckeditor_5.urls")),
@@ -44,3 +43,7 @@ else:
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0]
     )
+
+urlpatterns += [
+    re_path(r"^.*$", custom_404_view),
+]

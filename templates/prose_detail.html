@@ -4,7 +4,7 @@
     <div class="detail-container mt-4">
         <div class="row">
             <div class="col-md-9 mx-auto d-flex flex-column">
-                <h2 class="news-title" style="width: 85%; margin-bottom: 0;">{{ prose.title }}</h2>
+                <h2 class="news-title" id="newsTitle" style="width: 85%; margin-bottom: 0;">{{ prose.title }}</h2>
                 <div class="divider"></div>
                 <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin: 0; padding-top: 5px;">
                     <p class="author" style="font-size: 1.5em; margin: 0;">
@@ -20,13 +20,13 @@
                 <p class="news-content">{{ prose.content }}</p>
             </div>
             <div class="col-md-3 d-flex flex-column archive-container">
-                <h4 class="archive-title" style="margin-bottom: 10px;">Arxivimizdən</h4>
+                <h2 class="archive-title" id="archiveTitle" style="margin-bottom: 10px;">Arxivimizdən</h2>
                 <ul class="list-unstyled">
                     {% for related in related_prose %}
                     <li class="mb-3 d-flex">
                         <a href="{% url 'prose_detail' related.slug %}" class="archive-link" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start;">
                             <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image">
-                            <p class="archive-link" style="margin-bottom:0">{{ related.title }}</p>
+                            <p style="margin-bottom: 0;">{{ related.title }}</p>
                             <p class="author">{{ related.author }}</p>
                         </a>
                     </li>
@@ -35,4 +35,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function alignTitles() {
+            const newsTitle = document.getElementById('newsTitle');
+            const archiveTitle = document.getElementById('archiveTitle');
+
+            // News title'ın yüksekliğini kontrol et
+            const newsTitleHeight = newsTitle.offsetHeight;
+            const newsTitleMargin = parseInt(window.getComputedStyle(newsTitle).marginBottom, 10);
+            const totalHeight = newsTitleHeight + newsTitleMargin;
+
+            // Eğer news title iki satıra geçmişse
+            if (totalHeight > 40) { // 40px yükseklik aşılırsa
+                // Archive title'ı aynı hizaya getir
+                archiveTitle.style.marginTop = `${totalHeight}px`;
+            } else {
+                // Normal konumda bırak
+                archiveTitle.style.marginTop = '10px'; // varsayılan boşluk
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', alignTitles);
+        window.addEventListener('resize', alignTitles);
+    </script>
 {% endblock %}

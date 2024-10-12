@@ -11,6 +11,7 @@
     margin-right: 20px;
 }
 
+
 .prose-card .card-title {
     color: inherit;
     /* Varsayılan rengin korunması için */
@@ -53,7 +54,7 @@ header h1 {
 .container {
     width: 100%;
     max-width: none;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     padding-right: 1rem;
 }
 
@@ -161,19 +162,34 @@ footer {
 .article-list-web h2 {
     color: #fff;
     margin-bottom: 20px;
-    
+
+}
+
+.prose-list {
+    flex: 1 1 33.333%;
+    /* 3 sütun düzeni için */
+    max-width: calc(33.333% - 1rem);
+    /* Boşluk için ayarlanmış genişlik */
+    box-sizing: border-box;
 }
 
 
-.row {
+.row-home {
     height: 100%;
     display: flex;
     align-items: stretch;
 
 }
 
+.row.detail {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+
+}
+
 .container .row>* {
-    padding-left: 0;
     padding-right: 0;
 }
 
@@ -265,6 +281,23 @@ footer {
         height: auto;
     }
 
+    .news-title {
+        font-size: 1.5em;
+    }
+
+    .news-image {
+        /* Yeni stil */
+        width: 100% !important;
+        height: auto;
+    }
+
+    .col-md-4 {
+        flex: 1 1 100%;
+        /* 3 sütun düzeni için */
+        max-width: calc(100%);
+        /* Boşluk için ayarlanmış genişlik */
+        box-sizing: border-box;
+    }
 
     .image-preview,
     .article-list {
@@ -293,7 +326,7 @@ footer {
         /* Sol boşluğu kaldır */
         padding-right: 0;
         /* Sağ boşluğu kaldır */
-        background-color: rgb(65, 65, 65);
+        background-color: #000;
         /* Arka plan rengi siyah */
 
 
@@ -385,7 +418,7 @@ footer {
 
     .article-title {
         margin: 0;
-        color: #ffffff;
+        color: #000;
         transition: color 0.3s;
         font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
         text-align: left;
@@ -659,7 +692,7 @@ footer {
 
 .archive-container {
     /* Yeni stil */
-    margin-top: 4.5em;
+    margin-top: 0em;
     padding-right: 7px;
 }
 
