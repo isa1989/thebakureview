@@ -28,7 +28,7 @@ handler404 = custom_404_view
 
 urlpatterns = [
     path("upload/", custom_upload_file, name="custom_upload_file"),
-    path("admin/", admin.site.urls),
+    path("thebakureview/admin/", admin.site.urls),
     path("", include("core.urls")),
 ]
 urlpatterns += [
