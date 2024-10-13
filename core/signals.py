@@ -7,10 +7,9 @@ from core.utils import create_thumbnail
 
 def update_home_with_new_content(instance, source_model_name):
     home_instance, created = Home.objects.get_or_create(
-        slug=instance.slug,
+        source_model=source_model_name,
         defaults={
             "title": instance.title,
-            "content": instance.content,
             "thumbnail": instance.thumbnail,
             "author": instance.author,
             "is_active": instance.is_active,
@@ -20,7 +19,6 @@ def update_home_with_new_content(instance, source_model_name):
 
     if not created:
         home_instance.title = instance.title
-        home_instance.content = instance.content
         home_instance.thumbnail = instance.thumbnail
         home_instance.author = instance.author
         home_instance.is_active = instance.is_active
@@ -38,19 +36,19 @@ def delete_home_with_new_content(instance, source_model_name):
 
 @receiver(post_save, sender=Interview)
 def add_interview_to_home(sender, instance, created, **kwargs):
-    if created:
+    if instance and not created:
         update_home_with_new_content(instance, f"interviews/{instance.slug}/")
 
 
 @receiver(post_save, sender=Writings)
 def add_writings_to_home(sender, instance, created, **kwargs):
-    if created:
+    if instance and not created:
         update_home_with_new_content(instance, f"writings/{instance.slug}/")
 
 
 @receiver(post_save, sender=Poetry)
 def add_poetry_to_home(sender, instance, created, **kwargs):
-    if created:
+    if instance and not created:
         update_home_with_new_content(instance, f"poetry/{instance.slug}/")
 
 

@@ -191,6 +191,7 @@ footer {
 
 .container .row>* {
     padding-right: 0;
+    /* margin-right: rem; */
 }
 
 
@@ -199,6 +200,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+
 }
 
 .article-card {
@@ -623,6 +625,7 @@ footer {
 
 .mt-3 {
     margin-top: 1rem !important;
+
 }
 
 .detail-container {
