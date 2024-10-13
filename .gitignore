@@ -5,3 +5,12 @@ ENV/
 .venv/
 db.sqlite3
 .env
+
+
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE Dosyaları
+.vscode/
+.idea/
