@@ -18,7 +18,7 @@
         {% for writing in all_writings %}
             <li>
                 <h3>
-                    <a href="{% url writing.model_name|add:'_detail' writing.id %}">
+                    <a href="{% url writing.model_name|add:'_detail' writing.slug %}">
                         {{ writing.title }}
                     </a>
                 </h3>

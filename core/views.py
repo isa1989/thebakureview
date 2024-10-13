@@ -175,16 +175,16 @@ def author_detail(request, author):
     all_writings = list(
         chain(
             Prose.objects.filter(queries)
-            .values("id", "title", "content")
+            .values("slug", "title", "content")
             .annotate(model_name=Value("prose")),
             Poetry.objects.filter(queries)
-            .values("id", "title", "content")
+            .values("slug", "title", "content")
             .annotate(model_name=Value("poetry")),
             Writings.objects.filter(queries)
-            .values("id", "title", "content")
+            .values("slug", "title", "content")
             .annotate(model_name=Value("writings")),
             Interview.objects.filter(queries)
-            .values("id", "title", "content")
+            .values("slug", "title", "content")
             .annotate(model_name=Value("interview")),
         )
     )
