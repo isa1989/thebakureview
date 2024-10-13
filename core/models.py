@@ -40,7 +40,7 @@ def get_image_upload_path(instance, filename):
 class BaseModel(models.Model):
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
-    content = models.TextField(db_index=True)
+    content = CKEditor5Field("Text", config_name="extends", db_index=True)
     image = models.ImageField(upload_to=get_image_upload_path)
     thumbnail = models.ImageField(
         upload_to=get_image_upload_path, null=True, blank=True
@@ -110,7 +110,6 @@ class Prose(BaseModel):
 
 
 class Poetry(BaseModel):
-    content = CKEditor5Field("Text", config_name="extends", db_index=True)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
@@ -136,7 +135,6 @@ class Writings(BaseModel):
 
 
 class Interview(BaseModel):
-    content = CKEditor5Field("Text", config_name="extends", db_index=True)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
