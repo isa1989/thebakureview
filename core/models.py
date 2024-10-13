@@ -151,7 +151,7 @@ class Interview(BaseModel):
 
 class Home(models.Model):
     title = models.CharField(max_length=200)
-    content = CKEditor5Field("Text", config_name="extends")
+    # content = CKEditor5Field("Text", config_name="extends")
     thumbnail = models.ImageField(upload_to=get_image_upload_thumbnail)
     author = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)

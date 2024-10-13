@@ -143,6 +143,31 @@ footer {
 }
 
 
+/* Her makale başlığının altına beyaz çizgi */
+.list-group-item {
+    margin: 10px 0;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    padding: 15px 0;
+    cursor: pointer;
+    height: auto;
+    transition: none;
+
+}
+
+.list-group-item .author-name {
+    font-size: 0.875em;
+    /* Yazar adı boyutu */
+}
+
+.list-group-item strong {
+    font-size: 1.5em;
+    /* Başlık boyutu */
+}
+
+
 /* Sağdaki makale başlıkları için tam siyah arka plan ve beyaz yazılar */
 .article-list-web {
     background-color: #000;
