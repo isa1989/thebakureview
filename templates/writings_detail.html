@@ -14,10 +14,12 @@
                 </p>
                 <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ writings.created_at|date:"d F Y"|lower }}</span>
             </div>
-            <div class="image-container">
-                <img src="{{ writings.image.url }}" alt="{{ writings.title }}" class="img-fluid news-image">
+            <div class="image-container" style="max-width: 100%; overflow: hidden; margin-top: 10px;">
+                <img src="{{ writings.image.url }}" alt="{{ writings.title }}" class="img-fluid news-image" style="max-width: 100%; height: auto;">
             </div>
-            <p class="news-content">{{ writings.content }}</p>
+            <div class="news-content" style="margin-top: 10px; overflow-wrap: break-word;">  <!-- CKEditor için içerik alanı -->
+                {{ writings.content|safe }}
+            </div>
         </div>
         <div class="col-md-3 d-flex flex-column archive-container">
             <h2 class="archive-title" id="archiveTitle" style="margin-bottom: 10px;">Arxivimizdən</h2>
