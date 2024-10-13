@@ -40,7 +40,7 @@ def get_image_upload_path(instance, filename):
 class BaseModel(models.Model):
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
-    content = CKEditor5Field("Text", config_name="extends", db_index=True)
+    content = CKEditor5Field("Text", config_name="extends")
     image = models.ImageField(upload_to=get_image_upload_path)
     thumbnail = models.ImageField(
         upload_to=get_image_upload_path, null=True, blank=True
