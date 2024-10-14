@@ -1,91 +1,138 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}THE BAKU REVIEW{% endblock %}
 
 {% block content %}
-<div class="container mt-0 top-articles-height">
-    <div class="row home align-items-stretch aspect-ratio-16-9">
-        <div class="col-md-6">
-            <div class="image-preview d-none d-md-block">  <!-- Sadece web için görünür -->
-                {% if top_5_articles %}
-                    <img id="articleImage" class="img-fluid" data-src="{{ top_5_articles.0.thumbnail.url }}" alt="{{ top_5_articles.0.title }}">
-                {% else %}
-                    <img id="articleImage" class="img-fluid" data-src="{% static 'images/default.png' %}" alt="Default Image">
-                {% endif %}
+<div class="container mt-5">
+    <!-- Üst Kısım (gizli) -->
+    <div class="row d-none d-md-flex" id="main-section" style="height: 60vh; overflow: hidden;">
+        <div class="col-md-6 d-flex align-items-stretch" style="flex: 3;">
+            <div style="width: 100%; height: 100%; position: relative; aspect-ratio: 3 / 2;">
+                <img id="main-image" class="img-fluid" 
+                     src="{% if top_5_articles %}{{ top_5_articles.0.thumbnail.url }}{% else %}{% static 'images/default.png' %}{% endif %}" 
+                     alt="{% if top_5_articles %}{{ top_5_articles.0.title }}{% else %}Default Image{% endif %}" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
-        <!-- Web için görünür olan kısım -->
-        <div class="col-md-4 article-list-web d-none d-md-block">
-            <ul class="list-group list-group-flush">
-                {% for article in top_5_articles %}
-                    <li class="list-group-item" data-image="{{ article.thumbnail.url }}" style="cursor: pointer;margin-left: 10px;" onclick="location.href='{{ article.source_model }}'">
-                        <strong>{{ article.title }}</strong>
-                        <p class="author-name">{{ article.author }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        
-        <!-- Mobil için görünür olan kısım -->
-        <div class="col-md-7 article-list d-block d-md-none">
+        <div class="col-md-6 d-flex flex-column align-items-stretch" style="flex: 2; background-color: black; color: white; aspect-ratio: 3 / 2; overflow-y: auto;">
             {% for article in top_5_articles %}
-                <a href="{{ article.source_model }}" class="text-decoration-none">
-                    <div class="card mb-3" style="background-color: #000; color: white;">
-                        <div class="card-body">
-                            <img data-src="{{ article.thumbnail.url }}" class="card-img-top lazyload" alt="Makale Fotoğrafı">
-                            <p class="author-name">{{ article.author }}</p>
-                            <p class="article-title">{{ article.title }}</p>
-                        </div>
-                    </div>
+            <div class="mb-4" style="margin-top: 10px; border-bottom: 1px solid white;" onmouseover="changeImage('{{ article.thumbnail.url }}')">
+                <a href="{{ article.source_model }}" class="text-decoration-none text-white">
+                    <h5>{{ article.title }}</h5>
+                    <p>Content for {{ article.title }} goes here.</p>
                 </a>
+            </div>
             {% endfor %}
         </div>
     </div>
-    
-</div>
 
-<main class="container mt-3">
-    <section class="articles-grid">
-        {% for article in remaining_articles %}
-            <div class="article-card">
-                <a href="{{ article.source_model }}" class="text-decoration-none">
-                    <div class="article-image-wrapper">
-                        <img data-src="{{ article.thumbnail.url }}" alt="Makale Fotoğrafı" class="img-fluid lazyload">
+    <!-- Planset Bölümü (görünür) -->
+    <div class="row" id="planset-section" style="display: none;">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Mansetler</h2>
+            <div class="d-flex flex-column">
+                {% for article in top_5_articles %}
+                <div class="d-flex align-items-center" style="width: 100%; padding: 0; border-bottom: 1px solid #ccc; background-color: black;">
+                    <div style="flex: 1; max-width: 30%; padding: 0;">
+                        <img src="{{ article.thumbnail.url }}" alt="Makale Resmi" style="width: 200px; height: auto; object-fit: cover;">
                     </div>
-                    <h3 class="article-title">{{ article.title }}</h3>   
-                    <h5 class="author-name" style="color: black;">{{ article.author }}</h5>
+                    <div style="flex: 2; max-width: 70%; padding: 0; color: white;">
+                        <h5 class="mb-1">{{ article.title }}</h5>
+                        <p class="mb-0">{{ article.author }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+
+
+    <!-- Diğer Bölümler -->
+    <div class="col-md-7 article-list d-block d-md-none">
+        {% for article in top_5_articles %}
+            <a href="{{ article.source_model }}" class="text-decoration-none">
+                <div class="card" style="background-color: #000; color: white; border: 1rem solid black; margin-bottom: 0;">
+                    <div class="card-body p-0">
+                        <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="Makale Fotoğrafı" style="border-radius: 0; object-fit: cover;">
+                        <p class="author-name">{{ article.author }}</p>
+                        <p class="article-title">{{ article.title }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <!-- Boşluk -->
+    <div style="margin-top: 20px;"></div>
+
+    <!-- Alt Kısım -->
+    <div class="row mt-4">
+        {% for article in remaining_articles %}
+        <div class="col-md-4 mb-3">
+            <div class="card" style="border: none; border-radius: .25rem; aspect-ratio: 3 / 2;">
+                <a href="{{ article.source_model }}" class="text-decoration-none">
+                    <div style="width: 100%; height: 0; padding-top: 66.67%; position: relative;">
+                        <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="Card Image" style="border-radius: 0; object-fit: cover; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <h5 class="card-title" style="color: black;">{{ article.title }}</h5>
+                        <p class="card-text" style="color: black;">{{ article.author }}</p>
+                    </div>
                 </a>
             </div>
+        </div>
         {% endfor %}
-    </section>
-</main>
+    </div>
+</div>
 
 <script>
-    // Sayfa yüklendikten sonra resimleri yükle
-    window.addEventListener('load', function() {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        
-        lazyImages.forEach(img => {
-            img.src = img.getAttribute('data-src');
-            img.removeAttribute('data-src'); // data-src'ı kaldır
-        });
-    });
+    function changeImage(imageUrl) {
+        document.getElementById('main-image').src = imageUrl;
+    }
 
-    const articles = document.querySelectorAll('.list-group-item');
-    const articleImage = document.getElementById('articleImage');
+    // Sayfa yüklendiğinde uygun genişlikte görünürlük ayarı
+    function toggleSections() {
+        const plansetSection = document.getElementById('planset-section');
+        const mainSection = document.getElementById('main-section');
+        const width = window.innerWidth;
 
-    articles.forEach(article => {
-        article.addEventListener('mouseover', () => {
-            const newImage = article.getAttribute('data-image');
-            articleImage.src = newImage;
-            article.querySelector('strong').classList.add('highlight');
-        });
+        if (width >= 768 && width <= 1024) {
+            plansetSection.style.display = 'block'; // Planset görünür
+            mainSection.style.display = 'none'; // Main section gizli
+        } else {
+            plansetSection.style.display = 'none'; // Planset gizli
+            mainSection.style.display = 'block'; // Main section görünür
+        }
+    }
 
-        article.addEventListener('mouseleave', () => {
-            article.querySelector('strong').classList.remove('highlight');
-        });
-    });
-    
+    // Sayfa yüklendiğinde ve pencere boyutu değiştiğinde çağır
+    window.onload = toggleSections;
+    window.onresize = toggleSections;
 </script>
+
+<style>
+    @media (min-width: 768px) and (max-width: 1024px) {
+        #main-section {
+            display: none !important; /* Main bölümünü gizle */
+        }
+
+        #planset-section {
+            display: block !important; /* Planset bölümünü göster */
+        }
+    }
+
+    @media (max-width: 767.98px) { /* Mobil görünüm için */
+        .article-list .card {
+            margin-bottom: 0; /* Kartlar arasındaki boşluğu kaldır */
+            border-radius: 0; /* Kenarları kare yap */
+            border: 1rem solid black; /* 1rem siyah kenarlık */
+        }
+    }
+</style>
 
 {% endblock %}
