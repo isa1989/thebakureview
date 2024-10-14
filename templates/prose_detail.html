@@ -14,7 +14,7 @@
                 </p>
                 <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ prose.created_at|date:"d F Y"|lower }}</span>
             </div>
-            <div class="image-container" style="max-width: 100%; overflow: hidden; margin-top: 10px;">
+            <div class="image-container" style="max-width: 100%; overflow: hidden;">
                 <img src="{{ prose.image.url }}" alt="{{ prose.title }}" class="img-fluid news-image" style="max-width: 100%; height: auto;">
             </div>
             <div class="news-content" style="margin-top: 10px; overflow-wrap: break-word;">  <!-- CKEditor için içerik alanı -->
@@ -61,4 +61,5 @@
     window.addEventListener('DOMContentLoaded', alignTitles);
     window.addEventListener('resize', alignTitles);
 </script>
+
 {% endblock %}

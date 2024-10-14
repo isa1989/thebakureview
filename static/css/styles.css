@@ -247,6 +247,18 @@ footer {
     text-align: left;
 }
 
+.col-md-6.d-flex.flex-column div a:hover h5,
+.col-md-6.d-flex.flex-column div a:hover p {
+    color: rgb(191, 61, 35) !important;
+    /* Hover sırasında yazının rengini değiştirir */
+}
+
+.row.mt-4 .col-md-4 .card a:hover .card-title {
+    color: rgb(191, 61, 35) !important;
+    /* Hover sırasında yazı rengini değiştirir */
+}
+
+
 .article-title {
     margin: 0;
     color: rgb(65, 65, 65);
@@ -281,6 +293,10 @@ footer {
     .header-section {
         flex-direction: column;
         height: auto;
+    }
+
+    .news-content {
+        width: 100% !important;
     }
 
     .news-title {
@@ -690,7 +706,7 @@ footer {
     /* Yeni stil */
     font-size: 1.2em;
     margin-top: 20px;
-    width: 80% !important;
+    width: 80%;
 }
 
 .archive-container {
