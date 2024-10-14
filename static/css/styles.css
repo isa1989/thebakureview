@@ -53,7 +53,7 @@ header h1 {
 
 .container {
     width: 100%;
-    max-width: none;
+    /* max-width: none; */
     padding-left: 0.5rem;
     padding-right: 1rem;
 }
