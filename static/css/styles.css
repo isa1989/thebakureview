@@ -290,6 +290,8 @@ footer {
 
 /* Responsive tasarım */
 @media (max-width: 767px) {
+
+
     .header-section {
         flex-direction: column;
         height: auto;

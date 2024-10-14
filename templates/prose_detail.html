@@ -6,7 +6,7 @@
         <div class="col-md-9 mx-auto d-flex flex-column">
             <h2 class="news-title" id="newsTitle" style="width: 85%; margin-bottom: 0;">{{ prose.title }}</h2>
             <div class="divider"></div>
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin: 0; padding-top: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin: 0;">
                 <p class="author" style="font-size: 1.5em; margin: 0;">
                     <a href="{% url 'author_detail' prose.author %}" style="color: inherit; text-decoration: none;">
                         {{ prose.author }}
@@ -52,10 +52,7 @@
         if (totalHeight > 40) { // 40px yükseklik aşılırsa
             // Archive title'ı aynı hizaya getir
             archiveTitle.style.marginTop = `${totalHeight}px`;
-        } else {
-            // Normal konumda bırak
-            archiveTitle.style.marginTop = '10px'; // varsayılan boşluk
-        }
+        } 
     }
 
     window.addEventListener('DOMContentLoaded', alignTitles);
