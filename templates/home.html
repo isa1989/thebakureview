@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container mt-5">
     <!-- Üst Kısım (gizli) -->
-    <div class="row d-none d-md-flex" id="main-section" style="height: 100vh; overflow: hidden;">
+    <div class="row d-none d-md-flex" id="main-section" style="height: 60vh; overflow: hidden;">
         <div class="col-md-6 d-flex align-items-stretch" style="flex: 3;">
             <div style="width: 100%; height: 100%; position: relative; aspect-ratio: 3 / 2;">
                 <img id="main-image" class="img-fluid" 
@@ -15,15 +15,17 @@
                      style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
-        <div class="col-md-6 d-flex flex-column align-items-stretch" style="flex: 2; background-color: black; color: white; aspect-ratio: 3 / 2; overflow-y: auto;">
-            {% for article in top_5_articles %}
-            <div class="mb-4" style="margin-top: 15px; border-bottom: {% if forloop.last %}none{% else %}1px solid white{% endif %};" onmouseover="changeImage('{{ article.thumbnail.url }}')">
-                <a href="{{ article.source_model }}" class="text-decoration-none text-white">
-                    <h5>{{ article.title }}</h5>
-                    <p>{{ article.author }}</p>
-                </a>
+        <div class="col-md-6 d-flex flex-column" style="flex: 2; background-color: black; color: white; overflow-y: auto;">
+            <div style="flex-grow: 1;">
+                {% for article in top_5_articles %}
+                <div style="margin-top: 15px; border-bottom: {% if forloop.last %}none{% else %}1px solid white{% endif %};" onmouseover="changeImage('{{ article.thumbnail.url }}')">
+                    <a href="{{ article.source_model }}" class="text-decoration-none text-white">
+                        <h5>{{ article.title }}</h5>
+                        <p>{{ article.author }}</p>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 
@@ -132,32 +134,9 @@
         }
     }
 
-    /* Safari Özel Durumları için CSS */
-    #main-section {
-        height: 100vh; /* Yüksekliği tam görünüm alanına ayarlayın */
-        overflow: hidden; /* Dikey kaydırmayı gizleyin */
-    }
-
-    .col-md-6 {
-        display: flex;
-        flex-direction: column; /* Dikey hizalama */
-        overflow: hidden; /* Kaydırmayı gizleyin */
-    }
-
-    .row {
-        max-height: calc(60vh - 20px); /* İstediğiniz yükseklik */
-        overflow: hidden; /* Kaydırmayı gizleyin */
-    }
-
-    @supports (-webkit-overflow-scrolling: touch) {
-        #main-section {
-            overflow: hidden; /* Safari için kaydırmayı gizleyin */
-        }
-    }
-
     /* Son makale için boşluğu kaldır */
     .col-md-6 .mb-4:last-child {
-        margin-bottom: 0 !important; /* Son öğeden sonra boşluğu kaldır */
+        border-bottom: none; /* Son öğeden sonra kenar çizgisini kaldır */
     }
 </style>
 
