@@ -296,6 +296,9 @@ footer {
         flex-direction: column;
         height: auto;
     }
+    .author-container {
+        width: 100% !important;
+    }
 
     .news-content {
         width: 100% !important;
