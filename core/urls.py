@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 urlpatterns = [
@@ -17,7 +18,7 @@ urlpatterns = [
     ),
     path("interviews/", views.InterviewListView.as_view(), name="interview_list"),
     path(
-        "interviews/<slug:slug>/",
+        "interview/<slug:slug>/",
         views.InterviewDetailView.as_view(),
         name="interview_detail",
     ),
