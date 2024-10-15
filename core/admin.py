@@ -9,13 +9,45 @@ from .models import (
     Prose,
     SubmissionGuidelines,
     Writings,
+    Author,
 )
 
-admin.site.register(News)
-admin.site.register(Prose)
-admin.site.register(Poetry)
-admin.site.register(Writings)
-admin.site.register(Interview)
-admin.site.register(Home)
+
+class BaseModelAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "get_authors",
+        "is_active",
+        "created_at",
+    )
+    search_fields = ("title", "authors__name")
+    filter_horizontal = ("authors",)
+
+    def get_authors(self, obj):
+        return ", ".join([author.name for author in obj.authors.all()])
+
+    get_authors.short_description = "Müəlliflər"
+
+
+class HomeModelAdmin(admin.ModelAdmin):
+    list_display = ("title", "get_authors", "is_active", "created_at")
+    search_fields = ("title", "authors__name")
+    list_filter = ("is_active", "created_at")
+    ordering = ("-created_at",)
+    filter_horizontal = ("authors",)
+
+    def get_authors(self, obj):
+        return ", ".join([author.name for author in obj.authors.all()])
+
+    get_authors.short_description = "Müəlliflər"
+
+
+admin.site.register(News, BaseModelAdmin)
+admin.site.register(Prose, BaseModelAdmin)
+admin.site.register(Poetry, BaseModelAdmin)
+admin.site.register(Writings, BaseModelAdmin)
+admin.site.register(Interview, BaseModelAdmin)
+admin.site.register(Author)
+admin.site.register(Home, HomeModelAdmin)
 admin.site.register(AboutUs)
 admin.site.register(SubmissionGuidelines)

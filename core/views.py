@@ -30,7 +30,7 @@ def custom_upload_file(request):
 def home(request):
     home_articles = (
         Home.objects.filter(is_active=True)
-        .only("title", "author", "thumbnail", "created_at")
+        .only("title", "authors", "thumbnail", "created_at")
         .order_by("-created_at")[:20]
     )
     top_5_articles = home_articles[:5]
@@ -170,7 +170,12 @@ class InterviewDetailView(DetailView):
 
 
 def author_detail(request, author):
-    queries = Q(author=author, is_active=True)
+    queries = Q(
+        authors__in=[
+            author,
+        ],
+        is_active=True,
+    )
 
     all_writings = list(
         chain(
@@ -184,6 +189,9 @@ def author_detail(request, author):
             .values("slug", "title", "content")
             .annotate(model_name=Value("writings")),
             Interview.objects.filter(queries)
+            .values("slug", "title", "content")
+            .annotate(model_name=Value("interview")),
+            News.objects.filter(queries)
             .values("slug", "title", "content")
             .annotate(model_name=Value("interview")),
         )
@@ -204,7 +212,7 @@ def search_all_view(request):
         search_conditions = (
             Q(title__icontains=query)
             | Q(content__icontains=query)
-            | Q(author__icontains=query)
+            | Q(authors__name__icontains=query)
         )
 
         models = [News, Prose, Poetry, Writings, Interview]

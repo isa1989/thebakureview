@@ -8,21 +8,23 @@
             <div class="divider"></div>
             <div class="author-container" style="display: flex; justify-content: space-between; align-items: center; width: 80%; margin: 0;">
                 <p class="author" style="font-size: 1.5em; margin: 0;">
-                    <a href="{% url 'author_detail' prose.author %}" style="color: inherit; text-decoration: none;">
-                        {{ prose.author }}
-                    </a>
+                    {% for author in prose.authors.all %}
+                        <a href="{% url 'author_detail' author.id %}" style="color: inherit; text-decoration: none;" title="{{ author.name }}">
+                            {{ author.name }}{% if not forloop.last %}, {% endif %}
+                        </a>
+                    {% endfor %}
                 </p>
                 <span class="date" style="font-size: 1.2em; white-space: nowrap;">{{ prose.created_at|date:"d F Y"|lower }}</span>
             </div>
             <div class="image-container" style="max-width: 100%; overflow: hidden;">
                 <img src="{{ prose.image.url }}" alt="{{ prose.title }}" class="img-fluid news-image" style="max-width: 100%; height: auto;">
             </div>
-            <div class="news-content" style="margin-top: 10px; overflow-wrap: break-word;">  <!-- CKEditor için içerik alanı -->
+            <div class="news-content" style="margin-top: 10px; overflow-wrap: break-word;">  
                 {{ prose.content|safe }}
             </div>
         </div>
         <div class="col-md-3 d-flex flex-column archive-container">
-            <h2 class="archive-title" id="archiveTitle" style="margin-bottom: 10px;">Arxivimizdən</h2>
+            <h3 class="archive-title" id="archiveTitle" style="margin-bottom: 10px;">Arxivimizdən</h3>
             <ul class="list-unstyled">
                 {% for related in related_prose %}
                 <li class="mb-3 d-flex">
@@ -43,14 +45,11 @@
         const newsTitle = document.getElementById('newsTitle');
         const archiveTitle = document.getElementById('archiveTitle');
 
-        // News title'ın yüksekliğini kontrol et
         const newsTitleHeight = newsTitle.offsetHeight;
         const newsTitleMargin = parseInt(window.getComputedStyle(newsTitle).marginBottom, 10);
         const totalHeight = newsTitleHeight + newsTitleMargin;
 
-        // Eğer news title iki satıra geçmişse
-        if (totalHeight > 40) { // 40px yükseklik aşılırsa
-            // Archive title'ı aynı hizaya getir
+        if (totalHeight > 40) {
             archiveTitle.style.marginTop = `${totalHeight}px`;
         } 
     }

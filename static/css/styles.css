@@ -247,8 +247,7 @@ footer {
     text-align: left;
 }
 
-.col-md-6.d-flex.flex-column div a:hover h5,
-.col-md-6.d-flex.flex-column div a:hover p {
+.col-md-6.d-flex.flex-column div a:hover h5 {
     color: rgb(191, 61, 35) !important;
     /* Hover sırasında yazının rengini değiştirir */
 }

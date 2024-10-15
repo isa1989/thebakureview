@@ -37,6 +37,17 @@ def get_image_upload_path(instance, filename):
     return os.path.join("media", model_name, filename)
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Müəllif"
+        verbose_name_plural = "Müəlliflər"
+
+
 class BaseModel(models.Model):
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
@@ -45,7 +56,9 @@ class BaseModel(models.Model):
     thumbnail = models.ImageField(
         upload_to=get_image_upload_path, null=True, blank=True
     )
-    author = models.CharField(max_length=100, db_index=True)
+    authors = models.ManyToManyField(
+        Author, related_name="%(class)s_authors", blank=True
+    )
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -87,7 +100,10 @@ class BaseModel(models.Model):
 
 class News(BaseModel):
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        authors_list = ", ".join(str(author) for author in self.authors.all())
+        return (
+            f"{self.title} by {authors_list}" if self.authors.exists() else self.title
+        )
 
     def get_absolute_url(self):
         return reverse("news_detail", args=[self.slug])
@@ -99,7 +115,10 @@ class News(BaseModel):
 
 class Prose(BaseModel):
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        authors_list = ", ".join(str(author) for author in self.authors.all())
+        return (
+            f"{self.title} by {authors_list}" if self.authors.exists() else self.title
+        )
 
     def get_absolute_url(self):
         return reverse("prose_detail", args=[self.slug])
@@ -112,7 +131,10 @@ class Prose(BaseModel):
 class Poetry(BaseModel):
 
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        authors_list = ", ".join(str(author) for author in self.authors.all())
+        return (
+            f"{self.title} by {authors_list}" if self.authors.exists() else self.title
+        )
 
     def get_absolute_url(self):
         return reverse("poetry_detail", args=[self.slug])
@@ -124,7 +146,10 @@ class Poetry(BaseModel):
 
 class Writings(BaseModel):
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        authors_list = ", ".join(str(author) for author in self.authors.all())
+        return (
+            f"{self.title} by {authors_list}" if self.authors.exists() else self.title
+        )
 
     def get_absolute_url(self):
         return reverse("writings_detail", args=[self.slug])
@@ -137,7 +162,10 @@ class Writings(BaseModel):
 class Interview(BaseModel):
 
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        authors_list = ", ".join(str(author) for author in self.authors.all())
+        return (
+            f"{self.title} by {authors_list}" if self.authors.exists() else self.title
+        )
 
     def get_absolute_url(self):
         return reverse("interview_detail", args=[self.slug])
@@ -151,13 +179,13 @@ class Home(models.Model):
     title = models.CharField(max_length=200)
     # content = CKEditor5Field("Text", config_name="extends")
     thumbnail = models.ImageField(upload_to=get_image_upload_thumbnail)
-    author = models.CharField(max_length=100)
+    authors = models.ManyToManyField(Author, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     source_model = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        return self.title
 
     class Meta:
         verbose_name = "Manşet"

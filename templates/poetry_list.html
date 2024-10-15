@@ -10,8 +10,14 @@
                 <img src="{{ poetry.thumbnail.url }}" class="card-img-top" alt="{{ poetry.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ poetry.title }}</h5>
-                    <p class="card-text"><small class="text-muted">{{ poetry.author }}</small></p>
-                    {% comment %} <p class="card-text">{{ poetry.content|truncatewords:5|safe }}</p> <!-- 5 kelimeye kadar kısalt --> {% endcomment %}
+                    <p class="card-text">
+                        <small class="text-muted">
+                            {% for author in poetry.authors.all %}
+                                {{ author.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </small>
+                    </p>
+                    {% comment %} <p class="card-text">{{ poetry.content|truncatewords:5|safe }}</p> {% endcomment %}
                 </div>
             </a>
         </div>

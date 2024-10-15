@@ -10,7 +10,13 @@
                 <img src="{{ news.thumbnail.url }}" class="card-img-top" alt="Haber Fotoğrafı">
                 <div class="card-body">
                     <h5 class="card-title">{{ news.title }}</h5>
-                    <p class="card-text"><small class="text-muted">{{ news.author }}</small></p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            {% for author in news.authors.all %}
+                                {{ author.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </small>
+                    </p>
                 </div>
             </a>
         </div>

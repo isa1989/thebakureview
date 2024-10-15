@@ -9,8 +9,14 @@
                 <img src="{{ writting.thumbnail.url }}" class="card-img-top" alt="{{ writting.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ writting.title }}</h5>
-                    <p class="card-text"><small class="text-muted">{{ writting.author }}</small></p>
-                    {% comment %} <p class="card-text">{{ writting.content|truncatewords:5 }}</p> <!-- 5 kelimeye kadar kısalt --> {% endcomment %}
+                    <p class="card-text">
+                        <small class="text-muted">
+                            {% for author in writting.authors.all %}
+                                {{ author.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </small>
+                    </p>
+                    {% comment %} <p class="card-text">{{ writting.content|truncatewords:5 }}</p> {% endcomment %}
                 </div>
             </a>
         </div>

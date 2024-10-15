@@ -10,7 +10,13 @@
                 <img src="{{ prose.thumbnail.url }}" class="card-img-top" alt="Nəsr Fotoğrafı">
                 <div class="card-body">
                     <h5 class="card-title">{{ prose.title }}</h5>
-                    <p class="card-text"><small class="text-muted">{{ prose.author }}</small></p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            {% for author in prose.authors.all %}
+                                {{ author.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </small>
+                    </p>
                     {% comment %} <p class="card-text">{{ prose.content|truncatewords:20 }}</p> {% endcomment %}
                 </div>
             </a>

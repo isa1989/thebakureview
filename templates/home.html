@@ -21,7 +21,11 @@
                 <div style="margin-top: 15px; border-bottom: {% if forloop.last %}none{% else %}1px solid white{% endif %}; {% if forloop.last %}margin-bottom: 0;{% endif %};" onmouseover="changeImage('{{ article.thumbnail.url }}')">
                     <a href="{{ article.source_model }}" class="text-decoration-none text-white">
                         <h5>{{ article.title }}</h5>
-                        <p>{{ article.author }}</p>
+                        <p>
+                            {% for author in article.authors.all %}
+                                {{ author }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
                     </a>
                 </div>
                 {% endfor %}
@@ -44,7 +48,11 @@
                     <div style="flex: 2; max-width: 70%; padding: 0; color: white;">
                         <a href="{{ article.source_model }}" class="text-decoration-none text-white">
                             <h5 class="mb-1">{{ article.title }}</h5>
-                            <p class="mb-0">{{ article.author }}</p>
+                            <p class="mb-0">
+                                {% for author in article.authors.all %}
+                                    {{ author }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
                         </a>
                     </div>
                 </div>
@@ -61,7 +69,11 @@
                     <div class="card-body p-0">
                         <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="Makale Fotoğrafı" style="border-radius: 0; object-fit: cover;">
                         <p class="author-name">{{ article.title }}</p>
-                        <p class="article-title">{{ article.author }}</p>
+                        <p class="article-title">
+                            {% for author in article.authors.all %}
+                                {{ author }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -82,7 +94,11 @@
                     </div>
                     <div class="card-body" style="padding: 0;">
                         <h5 class="card-title" style="color: black;">{{ article.title }}</h5>
-                        <p class="card-text" style="color: black;">{{ article.author }}</p>
+                        <p class="card-text" style="color: black;">
+                            {% for author in article.authors.all %}
+                                {{ author }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
                     </div>
                 </a>
             </div>
@@ -133,6 +149,12 @@
             border-radius: 0; /* Kenarları kare yap */
             border: 1rem solid black; /* 1rem siyah kenarlık */
         }
+        .row.mt-4 {
+            margin-left: 0.3rem;
+            margin-right: 1rem;
+        }
+
+       
     }
 
     /* Son makale için boşluğu kaldır */
@@ -140,8 +162,8 @@
         border-bottom: none; /* Son öğeden sonra kenar çizgisini kaldır */
     }
     .col-md-6.d-flex.flex-column > div:last-child {
-    margin-bottom: 0 !important; /* Alt boşluğu kaldır */
-}
+        margin-bottom: 0 !important; /* Alt boşluğu kaldır */
+    }
 </style>
 
 {% endblock %}
