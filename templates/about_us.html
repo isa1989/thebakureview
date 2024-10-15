@@ -6,8 +6,10 @@
 <div class="about-us-container">
     <h1 class="text-center">{{ about_us.title }}</h1>
     <div class="about-us-content" style="text-align: center;">
-        <img src="{% static 'images/kimik.jpg' %}" alt="{{ about_us.title }}" class="img-fluid" style="margin: 0 auto; max-width: 100%; height: auto;">
-        <div class="content-body" style="max-width: 1200px; margin: 0 auto; padding-top: 20px;">
+        {% if about_us.image %}
+        <img src="{{ about_us.image.url }}" alt="{{ about_us.title }}" class="img-fluid" style="margin: 0 auto; max-width: 100%; height: auto;">
+        {% endif %}
+            <div class="content-body" style="max-width: 1200px; margin: 0 auto; padding-top: 20px;">
             {{ about_us.content|safe }}
         </div>
     </div>

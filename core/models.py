@@ -193,11 +193,9 @@ class Home(models.Model):
 
 
 class AboutUs(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-
-    def __str__(self):
-        return self.title
+    # title = models.CharField(max_length=200)
+    # content = models.TextField()
+    image = models.ImageField(upload_to="images/", null=True, blank=True)
 
     class Meta:
         verbose_name = "Biz Kimik"
