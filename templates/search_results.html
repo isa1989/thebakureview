@@ -52,7 +52,7 @@
 
     {% if results %}
         <ul>
-        {% for item in results %}{{item.get_absolute_url}}
+        {% for item in results %}
             <li>
                 <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
                 <p>{{ item.content|truncatewords:25|safe }}...</p>
