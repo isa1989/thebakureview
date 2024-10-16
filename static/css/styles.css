@@ -295,6 +295,7 @@ footer {
         flex-direction: column;
         height: auto;
     }
+
     .author-container {
         width: 100% !important;
     }
@@ -697,7 +698,7 @@ footer {
 .image-container {
     /* Yeni stil */
     /* flex-grow: 1; */
-    margin-top: 0px;
+    margin-top: 5px;
 }
 
 .news-image {
@@ -717,6 +718,7 @@ footer {
     /* Yeni stil */
     margin-top: 0em;
     padding-right: 7px;
+    margin-top: 5px;
 }
 
 .archive-title {
