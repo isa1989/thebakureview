@@ -10,6 +10,7 @@ from django.views.generic import DetailView, ListView
 
 from .models import (
     AboutUs,
+    AppealReaders,
     Author,
     Home,
     Interview,
@@ -247,6 +248,15 @@ class SubmissionGuidelinesView(DetailView):
 
     def get_object(self):
         return SubmissionGuidelines.objects.first()
+
+
+class AppealReadersView(DetailView):
+    model = AboutUs
+    template_name = "appeal.html"
+    context_object_name = "appeal"
+
+    def get_object(self):
+        return AppealReaders.objects.first()
 
 
 def custom_404_view(request, exception=None):

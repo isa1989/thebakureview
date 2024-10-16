@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from .models import (
     AboutUs,
+    AppealReaders,
+    Author,
     Home,
     Interview,
     News,
@@ -9,7 +11,6 @@ from .models import (
     Prose,
     SubmissionGuidelines,
     Writings,
-    Author,
 )
 
 
@@ -51,3 +52,4 @@ admin.site.register(Author)
 admin.site.register(Home, HomeModelAdmin)
 admin.site.register(AboutUs)
 admin.site.register(SubmissionGuidelines)
+admin.site.register(AppealReaders)

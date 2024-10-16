@@ -26,6 +26,7 @@ urlpatterns = [
     path(
         "submission/", views.SubmissionGuidelinesView.as_view(), name="sub_guidelines"
     ),
+    path("appeal-readers/", views.AppealReadersView.as_view(), name="appeal_readers"),
     path("author/<str:author>/", views.author_detail, name="author_detail"),
     path("search/", views.search_all_view, name="search_all"),
 ]

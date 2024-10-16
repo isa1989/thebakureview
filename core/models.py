@@ -218,3 +218,15 @@ class SubmissionGuidelines(models.Model):
     class Meta:
         verbose_name = "Yazı Qəbulu"
         verbose_name_plural = "Yazı Qəbulu"
+
+
+class AppealReaders(models.Model):
+    title = models.CharField(max_length=200)
+    content = CKEditor5Field("Text", config_name="extends")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Oxuculara müraciət"
+        verbose_name_plural = "Oxuculara müraciət"

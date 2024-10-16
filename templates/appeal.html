@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Yazı Qəbulu{% endblock %}
+
+{% block content %}
+<div class="submission-content d-flex flex-column align-items-center">
+    <h1 class="text-center">{{ appeal.title }}</h1>
+    <div class="content-body"style="font-size: 1.1em; line-height: 1.8;">
+        {{ appeal.content|safe }}
+    </div>
+</div>
+{% endblock %}
