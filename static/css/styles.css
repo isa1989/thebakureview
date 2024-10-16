@@ -561,13 +561,16 @@ footer {
     object-position: top;
 } */
 
-.news-card .card-body {
+/* .news-card .card-body {
     padding: 1 5px;
+} */
+.card-body {
+    padding: 0;
 }
 
 .news-card .card-title {
     font-size: 1.25rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 !important;
     color: #333;
 }
 
@@ -590,6 +593,7 @@ footer {
     height: auto;
     object-fit: cover;
     aspect-ratio: 3 / 2;
+    margin-bottom: 1rem;
 }
 
 
