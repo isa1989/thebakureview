@@ -5,51 +5,45 @@
 {% block content %}
 <style>
     .black-link {
-        color: black;
-        text-decoration: none;
-        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
-        font-size: 1.25rem;
-        text-transform: uppercase;
+        color: black; /* Bağlantı rengi siyah */
+        text-decoration: none; /* Alt çizgiyi kaldırır */
+        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Bağlantı font ailesi */
+        font-size: 1.25rem; /* Bağlantı boyutu, gerektiği gibi ayarlayın */
+        text-transform: uppercase; /* Tüm harfleri büyük yapar */
     }
     
     .black-link:hover {
-        color: rgb(191, 61, 35);
+        color: rgb(191, 61, 35); /* Hover durumunda renk değişir */
     }
 
+    /* Liste stilleri */
     ul {
-        list-style-type: none;
-        padding: 0;
+        list-style-type: none; /* Yumru noktaları kaldırır */
+        padding: 0; /* Varsayılan padding'i kaldırır */
     }
 
     li {
-        padding: 10px 0;
+        padding: 10px 0; /* Yukarı ve aşağıdan boşluk verir */
     }
 
     h2 {
-        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif;
-        font-size: 2rem;
-    }
-
-    .content-container {
-        padding-left: 10px;
-        padding-right: 10px;
+        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Başlık font ailesi */
+        font-size: 2rem; /* Başlık boyutu */
     }
 </style>
 
-<div class="content-container">
-    <h2>"{{ query }}" üçün axtarış nəticələri ({{ results_count }})</h2>
+<h2>"{{ query }}" üçün axtarış nəticələri ({{ results_count }})</h2> <!-- Sonuç sayısını burada gösteriyoruz -->
 
-    {% if results %}
-        <ul>
-        {% for item in results %}
-            <li>
-                <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
-                <p>{{ item.content|slice:":50"|truncatewords:25|safe }}...</p>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Heç bir nəticə tapılmadı.</p>
-    {% endif %}
-</div>
+{% if results %}
+    <ul>
+    {% for item in results %}
+        <li>
+            <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
+            <p>{{ item.content|slice:":50"|truncatewords:25|safe }}...</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Heç bir nəticə tapılmadı.</p>
+{% endif %}
 {% endblock %}
