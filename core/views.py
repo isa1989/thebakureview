@@ -220,7 +220,9 @@ def search_all_view(request):
         models = [News, Prose, Poetry, Writings, Interview]
 
         for model in models:
-            results.extend(model.objects.filter(search_conditions, is_active=True))
+            results.extend(
+                model.objects.filter(search_conditions, is_active=True).distinct()
+            )
 
     return render(
         request,
