@@ -29,7 +29,7 @@
                 {% for related in related_prose %}
                 <li class="mb-3 d-flex">
                     <a href="{% url 'prose_detail' related.slug %}" class="archive-link" style="flex: 1; display: flex; flex-direction: column; align-items: flex-start;">
-                        <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image"style="margin-bottom: 100px;">
+                        <img src="{{ related.image.url }}" alt="{{ related.title }}" class="img-fluid archive-image"style="margin-bottom: 10px;">
                         <p style="margin-bottom: 0;">{{ related.title }}</p>
                         <p class="author">{{ related.author }}</p>
                     </a>
