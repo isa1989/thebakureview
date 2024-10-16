@@ -55,7 +55,7 @@
         {% for item in results %}
             <li>
                 <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
-                <p>{{ item.content|truncatewords:5|safe }}...</p>
+                {% comment %} <p>{{ item.content|truncatewords:5|safe }}...</p> {% endcomment %}
             </li>
         {% endfor %}
         </ul>
