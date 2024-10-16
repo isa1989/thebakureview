@@ -34,6 +34,17 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    /* Küçük ekranlar için iyileştirme */
+    @media (max-width: 768px) {
+        .black-link {
+            font-size: 1.1rem; /* Mobilde yazı boyutunu küçült */
+        }
+
+        h2 {
+            font-size: 1.5rem; /* Başlık boyutunu mobilde küçült */
+        }
+    }
 </style>
 
 <div class="content-container">
@@ -44,7 +55,7 @@
         {% for item in results %}
             <li>
                 <a href="{{ item.get_absolute_url }}" class="black-link">{{ item.title }}</a><br>
-                <p>{{ item.content|slice:":50"|truncatewords:25|safe }}...</p>
+                <p>{{ item.content|truncatewords:25|safe }}...</p>
             </li>
         {% endfor %}
         </ul>
