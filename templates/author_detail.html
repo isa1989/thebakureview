@@ -22,8 +22,8 @@
                         {{ writing.title }}
                     </a>
                 </h3>
-                <p>{{ writing.content|slice:":50"|truncatewords:25|safe }}...</p> 
-                <div class="divider"></div> 
+                {% comment %} <p>{{ writing.content|slice:":50"|truncatewords:25|safe }}...</p> 
+                <div class="divider"></div>  {% endcomment %}
             </li>
         {% empty %}
             <p>Yazarın yazıları tapılmadı.</p>
