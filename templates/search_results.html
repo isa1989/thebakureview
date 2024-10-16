@@ -3,34 +3,7 @@
 {% block title %}Axtarış Nəticələri{% endblock %}
 
 {% block content %}
-<style>
-    .black-link {
-        color: black; /* Bağlantı rengi siyah */
-        text-decoration: none; /* Alt çizgiyi kaldırır */
-        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Bağlantı font ailesi */
-        font-size: 1.25rem; /* Bağlantı boyutu, gerektiği gibi ayarlayın */
-        text-transform: uppercase; /* Tüm harfleri büyük yapar */
-    }
-    
-    .black-link:hover {
-        color: rgb(191, 61, 35); /* Hover durumunda renk değişir */
-    }
 
-    /* Liste stilleri */
-    ul {
-        list-style-type: none; /* Yumru noktaları kaldırır */
-        padding: 0; /* Varsayılan padding'i kaldırır */
-    }
-
-    li {
-        padding: 10px 0; /* Yukarı ve aşağıdan boşluk verir */
-    }
-
-    h2 {
-        font-family: "heldane", Georgia, Cambria, "Times New Roman", Times, serif; /* Başlık font ailesi */
-        font-size: 2rem; /* Başlık boyutu */
-    }
-</style>
 
 <h2>"{{ query }}" üçün axtarış nəticələri ({{ results_count }})</h2> <!-- Sonuç sayısını burada gösteriyoruz -->
 
