@@ -111,6 +111,7 @@ class News(BaseModel):
     class Meta:
         verbose_name = "Yeniliklər"
         verbose_name_plural = "Yeniliklər"
+        ordering = ["-created_at"]
 
 
 class Prose(BaseModel):
@@ -126,6 +127,7 @@ class Prose(BaseModel):
     class Meta:
         verbose_name = "Nəsr"
         verbose_name_plural = "Nəsr"
+        ordering = ["-created_at"]
 
 
 class Poetry(BaseModel):
@@ -142,6 +144,7 @@ class Poetry(BaseModel):
     class Meta:
         verbose_name = "Poeziya"
         verbose_name_plural = "Poeziya"
+        ordering = ["-created_at"]
 
 
 class Writings(BaseModel):
@@ -157,6 +160,7 @@ class Writings(BaseModel):
     class Meta:
         verbose_name = "Yazılar"
         verbose_name_plural = "Yazılar"
+        ordering = ["-created_at"]
 
 
 class Interview(BaseModel):
@@ -173,6 +177,7 @@ class Interview(BaseModel):
     class Meta:
         verbose_name = "Müsahibə"
         verbose_name_plural = "Müsahibə"
+        ordering = ["-created_at"]
 
 
 class Home(models.Model):
@@ -190,6 +195,7 @@ class Home(models.Model):
     class Meta:
         verbose_name = "Manşet"
         verbose_name_plural = "Manşet"
+        ordering = ["-created_at"]
 
 
 class AboutUs(models.Model):

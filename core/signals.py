@@ -1,6 +1,7 @@
-from django.db.models.signals import post_save, pre_delete, m2m_changed
+from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.dispatch import receiver
-from .models import Home, Interview, Poetry, Prose, Writings
+
+from .models import Home, Interview, News, Poetry, Prose, Writings
 
 
 def update_home_with_new_content(instance, source_model_name):
@@ -26,6 +27,7 @@ def delete_home_with_new_content(source_model_name):
     Home.objects.filter(source_model=source_model_name).delete()
 
 
+@receiver(post_save, sender=News)
 @receiver(post_save, sender=Interview)
 @receiver(post_save, sender=Writings)
 @receiver(post_save, sender=Poetry)
@@ -36,6 +38,7 @@ def add_content_to_home(sender, instance, created, **kwargs):
         update_home_with_new_content(instance, f"{model_name}/{instance.slug}/")
 
 
+@receiver(pre_delete, sender=News)
 @receiver(pre_delete, sender=Interview)
 @receiver(pre_delete, sender=Writings)
 @receiver(pre_delete, sender=Poetry)
@@ -45,6 +48,7 @@ def delete_content_from_home(sender, instance, **kwargs):
     delete_home_with_new_content(f"{model_name}/{instance.slug}/")
 
 
+@receiver(m2m_changed, sender=News.authors.through)
 @receiver(m2m_changed, sender=Interview.authors.through)
 @receiver(m2m_changed, sender=Writings.authors.through)
 @receiver(m2m_changed, sender=Poetry.authors.through)

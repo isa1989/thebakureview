@@ -10,6 +10,7 @@ from django.views.generic import DetailView, ListView
 
 from .models import (
     AboutUs,
+    Author,
     Home,
     Interview,
     News,
@@ -165,11 +166,12 @@ class InterviewDetailView(DetailView):
             Interview.objects.filter(is_active=True)
             .exclude(id=interview_id)
             .order_by("-created_at")[:5]
-        )  # İlgili mülakatları getir
+        )
         return context
 
 
 def author_detail(request, author):
+    author = get_object_or_404(Author, id=author)
     queries = Q(
         authors__in=[
             author,
