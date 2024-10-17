@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block og_title %}{{ news.title }}{% endblock %}
+{% block og_description %}{{ news.content }}{% endblock %}
+{% block og_image %}{{ news.thumbnail.url }}{% endblock %}
 {% block content %}
 
 <div class="detail-container mt-4">
