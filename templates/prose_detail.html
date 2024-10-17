@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{ prose.title }}{% endblock %}
-{% block description %}{{ prose.description }}{% endblock %}
 {% block og_title %}{{ prose.title }}{% endblock %}
 {% block og_description %}{{ prose.description }}{% endblock %}
 {% block og_image %}{{ prose.thumbnail.url }}{% endblock %}
-{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
 {% block content %}
 <div class="detail-container mt-4">
     <div class="row">
