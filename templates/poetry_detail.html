@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block og_title %}{{ poetry.title }}{% endblock %}
-{% block og_description %}{{ poetry.content|safe }}{% endblock %}
+{% comment %} {% block og_description %}{{ poetry.content|safe }}{% endblock %} {% endcomment %}
 {% block og_image %}{{ poetry.thumbnail.url }}{% endblock %}
 {% block content %}
 <div class="detail-container mt-4">
