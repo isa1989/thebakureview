@@ -7,9 +7,7 @@
     .black-link {
         color: black;
         text-decoration: none;
-        {% comment %} font-family: 'Lora', Georgia, Cambria, "Times New Roman", Times, serif; {% endcomment %}
         font-size: 1.25rem;
-        {% comment %} text-transform: uppercase; {% endcomment %}
     }
     
     .black-link:hover {
@@ -35,14 +33,13 @@
         padding-right: 10px;
     }
 
-    /* Küçük ekranlar için iyileştirme */
     @media (max-width: 768px) {
         .black-link {
-            font-size: 1.1rem; /* Mobilde yazı boyutunu küçült */
+            font-size: 1.1rem; 
         }
 
         h2 {
-            font-size: 1.5rem; /* Başlık boyutunu mobilde küçült */
+            font-size: 1.5rem; 
         }
     }
 </style>
@@ -59,6 +56,10 @@
             <hr>
         {% endfor %}
         </ul>
+
+        <!-- Pagination Include -->
+        {% include "pagination.html" %}
+        
     {% else %}
         <p>Heç bir nəticə tapılmadı.</p>
     {% endif %}

@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import render_to_string
 from django.views.generic import DetailView, ListView
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from .models import (
     AboutUs,
@@ -207,29 +208,62 @@ def author_detail(request, author):
     return render(request, "author_detail.html", context)
 
 
-def search_all_view(request):
-    query = request.GET.get("q", "")
-    results = []
+from django.views.generic import ListView
+from django.db.models import Q
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .models import News, Prose, Poetry, Writings, Interview
 
-    if query:
-        search_conditions = (
-            Q(title__icontains=query)
-            | Q(content__icontains=query)
-            | Q(authors__name__icontains=query)
-        )
 
-        models = [News, Prose, Poetry, Writings, Interview]
+class SearchView(ListView):
+    template_name = "search_results.html"
+    context_object_name = "results"
+    # paginate_by = 5  # Sayfa başına 5 sonuç
 
-        for model in models:
-            results.extend(
-                model.objects.filter(search_conditions, is_active=True).distinct()
+    def get_queryset(self):
+        query = self.request.GET.get("q", "")
+        results = []
+
+        if query:
+            search_conditions = (
+                Q(title__icontains=query)
+                | Q(content__icontains=query)
+                | Q(authors__name__icontains=query)
             )
 
-    return render(
-        request,
-        "search_results.html",
-        {"query": query, "results": results, "results_count": len(results)},
-    )
+            models = [News, Prose, Poetry, Writings, Interview]
+
+            for model in models:
+                results.extend(
+                    model.objects.filter(search_conditions, is_active=True).distinct()
+                )
+
+        return results
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.request.GET.get("q", "")
+        context["results_count"] = len(
+            self.object_list
+        )  # self.object_list kullanıyoruz
+        return context
+
+    # def get(self, request, *args, **kwargs):
+    #     self.object_list = self.get_queryset()
+    #     paginator = Paginator(self.object_list, self.paginate_by)
+
+    #     page_number = request.GET.get("page")
+    #     try:
+    #         self.object_list = paginator.page(
+    #             page_number
+    #         )  # self.object_list'i güncelle
+    #     except PageNotAnInteger:
+    #         self.object_list = paginator.page(1)  # İlk sayfayı göster
+    #     except EmptyPage:
+    #         self.object_list = paginator.page(paginator.num_pages)  # Son sayfayı göster
+
+    #     context = self.get_context_data()
+    #     context["results"] = self.object_list  # Sonuçları context'e ekliyoruz
+    #     return self.render_to_response(context)
 
 
 class AboutUsView(DetailView):

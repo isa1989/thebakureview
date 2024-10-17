@@ -28,5 +28,5 @@ urlpatterns = [
     ),
     path("appeal-readers/", views.AppealReadersView.as_view(), name="appeal_readers"),
     path("author/<str:author>/", views.author_detail, name="author_detail"),
-    path("search/", views.search_all_view, name="search_all"),
+    path("search/", views.SearchView.as_view(), name="search_all"),
 ]
