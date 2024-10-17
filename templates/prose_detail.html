@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block og_title %}{{ prose.title }}{% endblock %}
-{% block og_description %}{{ prose.content|safe|truncatewords:10 }}{% endblock %} 
+{% block og_description %}{{ prose.content|safe }}{% endblock %} 
 {% block og_image %}{{ prose.thumbnail.url }}{% endblock %}
 {% block content %}
 <div class="detail-container mt-4">
