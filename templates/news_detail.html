@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block og_title %}{{ news.title }}{% endblock %}
-{% comment %} {% block og_description %}{{ news.content|truncatewords:10|safe }}{% endblock %} {% endcomment %}
+{% block og_description %}{{ news.content|striptags|truncatewords:10 }}{% endblock %}
 {% block og_image %}{{ news.thumbnail.url }}{% endblock %}
 {% block content %}
 
