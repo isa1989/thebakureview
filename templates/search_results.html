@@ -58,8 +58,26 @@
         </ul>
 
         <!-- Pagination Include -->
-        {% include "pagination.html" %}
-        
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if results.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ results.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo; Geri</span>
+                    </a>
+                </li>
+                {% endif %}
+                
+                {% if results.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ results.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">İrəli &raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
     {% else %}
         <p>Heç bir nəticə tapılmadı.</p>
     {% endif %}
